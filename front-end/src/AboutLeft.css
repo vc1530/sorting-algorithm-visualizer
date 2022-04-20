@@ -1,0 +1,6 @@
+.About-main { 
+    -webkit-animation: slideLeft 1s forwards;
+    -moz-animation: slideLeft 1s forwards;
+    animation: slideLeft 1s forwards;
+}
+

@@ -1,0 +1,31 @@
+.header { 
+    display: flex; 
+    align-items: center;
+    justify-content: center;
+    border-bottom-style: inset;
+    border-color: var(--border-color); 
+    height: 75px; 
+    width: 100vw; 
+    font-size: 16px; 
+    font-weight: 600;
+}
+
+.header-link { 
+    margin: 40px;
+    padding: 2px; 
+}
+
+.header-link a { 
+    text-decoration: none;
+    color: black; 
+    transition: .25s; 
+}
+
+.header-link a:hover { 
+    font-size: 20px; 
+    transition: .25s; 
+}
+
+.header p { 
+    color: var(--border-color); 
+}
