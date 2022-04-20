@@ -6,12 +6,8 @@ const Header = props => {
 
     useEffect(() => { 
         const current = document.getElementById(props.from)
-        current.style.fontSize = "20px"
-        current.onmouseover = () => { 
-            current.style.color = "black"; 
-            console.log(current)
-            current.style.border = "none"; 
-        }
+        // current.style.fontSize = "20px"
+        current.style.borderStyle = "none none solid none"
     })
 
     return ( 

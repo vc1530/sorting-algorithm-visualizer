@@ -8,6 +8,7 @@
     width: 100vw; 
     font-size: 16px; 
     font-weight: 600;
+    background-color: white;
 }
 
 .header-link { 
@@ -18,12 +19,16 @@
 .header-link a { 
     text-decoration: none;
     color: black; 
-    transition: .25s; 
+    transition: .25s;  
+    border-color: var(--border-color);
+    padding-bottom: 5px; 
 }
 
 .header-link a:hover { 
     font-size: 20px; 
     transition: .25s; 
+    /* border-bottom-style: solid; */
+    color: var(--hover-color) 
 }
 
 .header p { 

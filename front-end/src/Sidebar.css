@@ -22,6 +22,8 @@
     flex-direction: column;
     height: 500px;
     width: 220px; 
+    background-color: white;
+    box-shadow: 1.5px 1.5px 1.5px 1.5px var(--gray-color); 
 }
 
 .sidebar-link { 

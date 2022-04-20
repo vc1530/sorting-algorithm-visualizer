@@ -48,7 +48,7 @@ const About = props => {
                         </nav>
                     </div> 
                     <div className = "About-bio"> 
-                        <h2>What is Sorting Algorithm Visualizer?</h2>
+                        <h2>Waiting Room</h2>
                         <p> 
                             If you were a teacher, I would
                             Fail your class

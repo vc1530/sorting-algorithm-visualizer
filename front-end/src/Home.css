@@ -1,0 +1,5 @@
+.Home-main { 
+    -webkit-animation: slideRight 1s forwards;
+    -moz-animation: slideRight 1s forwards;
+    animation: slideRight 1s forwards;
+}

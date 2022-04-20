@@ -3,6 +3,7 @@ body {
   font-family:Arial, Helvetica, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: var(--header-color);
 }
 
 @-webkit-keyframes slideLeft {
@@ -62,8 +63,10 @@ code {
 
 :root { 
   --background-color: #ffffff; 
-  --header-color: #FFE4F3; 
+  --header-color: #fff6fb; 
   --text-color: #000000; 
   --border-color: #ABDAFC; 
   --border-hover-color: #0082de; 
+  --gray-color: rgb(231, 231, 231); 
+  --hover-color: gray; 
 }
