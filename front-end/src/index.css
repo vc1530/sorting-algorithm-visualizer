@@ -1,9 +1,45 @@
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap"); 
+
 body {
   margin: 0;
-  font-family:Arial, Helvetica, sans-serif;
+  font-family:'Quicksand', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: var(--header-color);
+}
+
+@keyframes grow {
+  from { 
+    transform: translateY(100%)
+  } 
+  to { 
+    transform: translateY(0) 
+  }
+}
+
+@keyframes fadeIn {
+  0% {opacity:0;}
+  100% {opacity:1;}
+}
+
+@-moz-keyframes fadeIn {
+  0% {opacity:0;}
+  100% {opacity:1;}
+}
+
+@-webkit-keyframes fadeIn {
+  0% {opacity:0;}
+  100% {opacity:1;}
+}
+
+@-o-keyframes fadeIn {
+  0% {opacity:0;}
+  100% {opacity:1;}
+}
+
+@-ms-keyframes fadeIn {
+  0% {opacity:0;}
+  100% {opacity:1;}
 }
 
 @-webkit-keyframes slideLeft {
@@ -56,6 +92,31 @@ body {
   }
 }
 
+@-webkit-keyframes slideDown {
+  0% {
+    transform: translateY(-50px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+@-moz-keyframes slideDown {
+  0% {
+    transform: translateY(-50px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+@keyframes slideDown {
+  0% {
+    transform: translateY(-50px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
@@ -66,7 +127,7 @@ code {
   --header-color: #fff6fb; 
   --text-color: #000000; 
   --border-color: #ABDAFC; 
-  --border-hover-color: #0082de; 
+  --border-hover-color: #58b9ff; 
   --gray-color: rgb(231, 231, 231); 
   --hover-color: gray; 
 }

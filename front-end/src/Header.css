@@ -1,14 +1,18 @@
 .header { 
+    top: 0; 
+    position: fixed; 
+    z-index: 99; 
     display: flex; 
-    align-items: center;
+    align-items: center; 
     justify-content: center;
-    border-bottom-style: inset;
+    border-bottom-style: solid;
     border-color: var(--border-color); 
     height: 75px; 
     width: 100vw; 
     font-size: 16px; 
     font-weight: 600;
     background-color: white;
+    box-shadow: 1.5px 1.5px 1.5px 1.5px var(--gray-color); 
 }
 
 .header-link { 
@@ -20,15 +24,15 @@
     text-decoration: none;
     color: black; 
     transition: .25s;  
-    border-color: var(--border-color);
     padding-bottom: 5px; 
+    border-image: linear-gradient(to right, #fbc2eb 0%, #a6c1ee 51%, #fbc2eb 100%);    border-image: linear-gradient(to right, #fbc2eb 0%, #a6c1ee 51%, #fbc2eb 100%);
+    border-image-slice: 1; 
 }
 
 .header-link a:hover { 
-    font-size: 20px; 
     transition: .25s; 
-    /* border-bottom-style: solid; */
-    color: var(--hover-color) 
+    color: var(--hover-color); 
+    border-bottom-style: solid; 
 }
 
 .header p { 

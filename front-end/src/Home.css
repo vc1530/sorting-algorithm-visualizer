@@ -2,4 +2,8 @@
     -webkit-animation: slideRight 1s forwards;
     -moz-animation: slideRight 1s forwards;
     animation: slideRight 1s forwards;
+    margin-top: 125px; 
+    margin-left: 75px; 
+    display: flex;
+    flex-direction: row;
 }

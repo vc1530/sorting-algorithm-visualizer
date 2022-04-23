@@ -86,13 +86,6 @@ const About = props => {
                             Know it's for the better
                             Know it's for the better
                             Know it's for the better
-                            Know it's for the better
-                            Know it's for the better
-                            Know it's for the better
-                            Know it's for the better
-                            Know it's for the better
-                            Know it's for the better
-                            Know it's for the better
                         </p>
                     </div>
                 </div> 

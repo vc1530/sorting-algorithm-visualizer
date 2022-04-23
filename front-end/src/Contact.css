@@ -1,0 +1,106 @@
+.Contact { 
+    display: flex; 
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.Contact-main { 
+    margin-top: 125px; 
+    margin-bottom: 75px; 
+    -webkit-animation: slideLeft 1s forwards;
+    -moz-animation: slideLeft 1s forwards;
+    animation: slideLeft 1s forwards;
+}
+
+.Contact header { 
+    font-size: 25px; 
+    font-weight: 600;
+    margin-left: 20px;  
+}
+
+.Contact-info { 
+    margin-top: 10px; 
+    display: flex; 
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 1.5px 1.5px 1.5px 1.5px var(--gray-color); 
+    width: 400px; 
+    background-color: white;
+    padding: 20px; 
+    border-radius: 20px; 
+}
+
+#Contact-names { 
+    display: flex; 
+    flex-direction: row;
+    margin-bottom: -10px; 
+}
+
+.Contact-formSection { 
+    display: flex; 
+    flex-direction: column;
+    margin: 10px; 
+}
+
+.Contact-formSection label { 
+    padding: 5px; 
+    font-size: 14px; 
+}
+
+.Contact-formSection input {  
+    border: 2px solid var(--gray-color);
+    border-radius: 5px; 
+    padding: 10px; 
+    font-size: 14px; 
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+    outline: none;
+    font-family:'Quicksand', sans-serif;
+}
+
+.Contact-formSection input:focus { 
+    border: 2px solid var(--border-color)
+}
+
+.Contact-formSection textarea { 
+    border: 2px solid var(--gray-color);
+    border-radius: 5px; 
+    height: 100px; 
+    padding: 10px; 
+    font-size: 14px; 
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+    outline: none; 
+    font-family:'Quicksand', sans-serif;
+}
+
+.Contact-formSection textarea:focus { 
+    border: 2px solid var(--border-color); 
+}
+
+.submit-button { 
+    display: flex; 
+    justify-content: right; 
+}
+
+.submit-button button { 
+    margin: 10px; 
+    border-style: none; 
+    height: 50px; 
+    width: 100px; 
+    border-radius: 10px; 
+    font-size: 16px; 
+    background-size: 200% auto;
+    background-image: linear-gradient(to right, #fbc2eb 0%, #a6c1ee 51%, #fbc2eb 100%);
+    transition: .5s; 
+    font-weight: bold;
+    font-style:italic;
+    color: white; 
+    font-family:'Quicksand', sans-serif;
+}
+
+.submit-button button:hover {
+    background-position: right center; 
+}
