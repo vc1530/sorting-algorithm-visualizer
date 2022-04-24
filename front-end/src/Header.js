@@ -7,13 +7,13 @@ const Header = props => {
     useEffect(() => { 
         const current = document.getElementById(props.from)
         current.style.borderStyle = "none none solid none"
-        current.style.borderImage = "linear-gradient(to right, #fbc2eb 0%, #a6c1ee 51%, #fbc2eb 100%);    border-image: linear-gradient(to right, #fbc2eb 0%, #a6c1ee 51%, #fbc2eb 100%)"
+        current.style.borderImage = "linear-gradient(to right, #fbc2eb 0%, #a6c1ee 51%, #fbc2eb 100%);"
     })
 
     return ( 
         <main className = "header"> 
             <div className = "header-link" > 
-                <a href = '/' id = "home"> HOME </a> 
+                <Link to = '/' id = "home" state = {{ from: props.from}}> HOME </Link> 
             </div> 
             <p>|</p>
             <div className = "header-link"> 
@@ -21,7 +21,7 @@ const Header = props => {
             </div>
             <p>|</p>
             <div className= "header-link">
-                <a href = '/contact' id = "contact" > CONTACT </a> 
+                <Link to = '/contact' id = "contact" state = {{from : props.from}}> CONTACT </Link> 
             </div>
         </main>
     )

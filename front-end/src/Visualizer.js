@@ -1,53 +1,61 @@
 import './Visualizer.css' 
 import { useState, useEffect} from 'react' 
 
+export const lightBlue = "#ABDAFC"
+export const darkBlue = "#58b9ff"
+export const green = "#78C091"
+export const changeColor = (i, color) => { 
+    const e = document.getElementById(`e${i}`)
+    e.lastChild.style.backgroundColor = color
+}
+export const delay = () => {
+    return new Promise(resolve => setTimeout(() => {
+      resolve();
+    }, 100)); 
+}
+
 const Visualizer = props => { 
 
-    const [sort, setSort] = useState('') 
-    const [input, setInput] = useState('') 
-
-    useEffect(() => { 
-        setSort(props.sort) 
-    }, [props.sort])
-
-    console.log(sort) 
-
-    const insertionSort = () => { 
-        const title = document.getElementById('Visualizer-title') 
-        if (sort === 'insertion') { 
-            title.style.marginLeft = "0px" 
-        }
+    const [input, setInput] = useState('')  
+    const [data, setData] = useState([]) 
+    const [sort, setSort] = useState(() => () => {})
+    const getData = (input) => { 
+        const data = input.split(',') 
+        data.forEach((element, i) => { 
+            data[i] = parseInt(element) 
+        })
+        setData(data) 
     }
 
-    insertionSort()
+    useEffect(() => { 
+        if (props.sort) { 
+            import(`./sorts/${props.sort}`)
+            .then(async (Sort)=> { 
+                slideTitle(Sort.title) 
+                await setSort(() => Sort.sort) 
+            })
+        } 
+    }, [props.sort])
 
-    const visualizer = document.getElementById("visualizer") 
-
-    const swap = (id1, id2) => { 
-        const e1 = document.getElementById(`e${id1}`) 
-        const e2 = document.getElementById(`e${id2}`)
-        e1.lastChild.style.backgroundColor = "#58b9ff"
-        e2.lastChild.style.backgroundColor = "#58b9ff" 
-
-        e1.style.animation = ""; 
-        e2.style.animation = ""; 
-        visualizer.insertBefore(e2, e1.nextSibling) 
-        visualizer.insertBefore(e1, e2.nextSibling) 
+    const slideTitle = (title) => { 
+        const titleBar = document.getElementById('Visualizer-title') 
+        const titleParent = titleBar.parentNode 
+        titleParent.removeChild(titleBar)  
+        titleBar.lastChild.innerHTML = title
+        titleBar.style.marginLeft = "0px" 
+        titleParent.appendChild(titleBar) 
     }
 
     const handleSave = e => { 
         e.preventDefault() 
 
+        const visualizer = document.getElementById("visualizer") 
         while (visualizer.firstChild) 
             visualizer.removeChild(visualizer.firstChild) 
 
-        const finalInput = input.split(',') 
-        finalInput.forEach((element, i) => { 
-            finalInput[i] = parseInt(element) 
-        })
-        const max = Math.max(...finalInput)
+        const max = Math.max(...data)
         
-        finalInput.forEach((element, i) => { 
+        data.forEach((element, i) => { 
 
             const barComp = document.createElement("div")
             barComp.className = "barComp"         
@@ -72,8 +80,16 @@ const Visualizer = props => {
         })
     }
 
-    const handleClick = () => { 
-        swap(1,2) 
+    const handleClick = async () => { 
+        await sort(data)
+        endSort()
+    }
+
+    const endSort = () => { 
+        for (let i = 0; i < data.length; i ++) { 
+            const e = document.getElementById(`e${i}`) 
+            e.lastChild.style.backgroundColor = lightBlue
+        }
     }
 
     return ( 
@@ -82,7 +98,7 @@ const Visualizer = props => {
                 VISUALIZER&nbsp;
                 <div>
                     <header id = "Visualizer-title">
-                        /&nbsp;<span>INSERTION SORT</span>
+                        /&nbsp;<span></span>
                     </header>
                 </div>
             </header>
@@ -94,11 +110,14 @@ const Visualizer = props => {
                         type = "text" 
                         placeholder = "Please enter values separated by commas. (Ex. 4,10,7,3,2,9,8,1,6)" 
                         value = {input} 
-                        onChange = {e => setInput(e.target.value)} 
+                        onChange = {e => { 
+                            setInput(e.target.value)
+                            getData(e.target.value) 
+                        }} 
                     /> 
                     <button> Save </button>
                 </form>
-                <button onClick = {handleClick}> Swap </button>
+                <button onClick = {handleClick}> Sort </button>
             </div>
         </main>
     )

@@ -22,22 +22,27 @@
 } 
 
 header div { 
-    overflow: hidden; 
-    width: 200px; 
+    overflow: hidden;
 }
 
 header header { 
     color: var(--border-color); 
 }
 
-#Visualizer-title { 
+#Visualizer-title {  
     transition: 1s;  
-    margin-left: -200px; 
-    width: fit-content; 
+    width: 200px; 
+    -webkit-animation: titleSlideRight 1s forwards;
+    -moz-animation: titleSlideRight 1s forwards;
+    animation: titleSlideRight 1s forwards;
+    margin-left: -200px;
 }
 
 #Visualizer-title span { 
     color: black; 
+    margin-top: -3px; 
+    margin-bottom: -3px;
+    border-width: 3px; 
     border-bottom-style: solid; 
     border-image: linear-gradient(to right, #fbc2eb 0%, #a6c1ee 51%, #fbc2eb 100%);    border-image: linear-gradient(to right, #fbc2eb 0%, #a6c1ee 51%, #fbc2eb 100%);
     border-image-slice: 1; 
@@ -95,11 +100,7 @@ header header {
 }
 
 #visualizer .barComp { 
-    /* border-style:solid;  */
-    /* display: inline-block;  */
-    /* flex-direction: column; */
     text-align: center;
-    /* animation: grow 1s forwards;  */
     z-index: 1; 
     margin-top: auto;
     transition: all 1s ease; 
@@ -111,12 +112,6 @@ header header {
     background-color: var(--border-color);
 }
 
-/* #e1 { 
-    display: inline-block; 
-    border-style: solid; 
-    transition: 1s; 
-    -webkit-transform: rotate(90deg);
-    -moz-transform: rotate(90deg);
-    -o-transform: rotate(90deg); 
-    transform: rotate(90deg);
-} */
+#visualizer .bar:hover { 
+    background-color: var(--border-hover-color)!important;
+}

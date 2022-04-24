@@ -1,4 +1,4 @@
-// import './About.css' 
+import './About.css' 
 import Header from './Header' 
 import { useLocation } from 'react-router-dom' 
 import me from './me.jpeg'
@@ -7,23 +7,31 @@ import { AiOutlineInstagram, AiOutlineLinkedin, AiFillGithub } from 'react-icons
 const About = props => {
 
     const location = useLocation() 
-    const { from } = location.state ? location.state : ""
-
-    if (from === "home") { 
-        console.log("sliding left") 
-        import('./AboutLeft.css')
-    } 
-    if (from === "contact") 
-        import('./AboutRight.css')
-
-    import('./About.css')
+    const { from } = location.state ? location.state : "" 
+    const left = 
+    `
+    .About-main { 
+        -webkit-animation: slideLeft 1s forwards;
+        -moz-animation: slideLeft 1s forwards;
+        animation: slideLeft 1s forwards;
+    }
+    `
+    const right = 
+    `
+    .About-main { 
+        -webkit-animation: slideRight 1s forwards;
+        -moz-animation: slideRight 1s forwards;
+        animation: slideRight 1s forwards;
+    }
+    `
 
     const handleClick = (link) => { 
         window.location = link
     }
 
     return (
-        <main className = "About"> 
+        <main className = "About">
+            <style>{from === 'home' ? left : right}</style> 
             <Header 
                 from = "about" 
             /> 

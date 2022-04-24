@@ -92,6 +92,31 @@ body {
   }
 }
 
+@-webkit-keyframes titleSlideRight {
+  0% {
+    transform: translateX(-200px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+@-moz-keyframes titleSlideRight {
+  0% {
+    transform: translateX(-200px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+@keyframes titleSlideRight {
+  0% {
+    transform: translateX(-200px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
 @-webkit-keyframes slideDown {
   0% {
     transform: translateY(-50px);
@@ -129,5 +154,9 @@ code {
   --border-color: #ABDAFC; 
   --border-hover-color: #58b9ff; 
   --gray-color: rgb(231, 231, 231); 
-  --hover-color: gray; 
+  --hover-color: gray;  
+}
+
+button { 
+  font-family:'Quicksand', sans-serif;
 }
