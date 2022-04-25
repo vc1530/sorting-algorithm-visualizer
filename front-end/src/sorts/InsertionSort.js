@@ -1,4 +1,4 @@
-import { delay, darkBlue, green, lightBlue, changeColor } from '../Visualizer'
+import { darkBlue, green, lightBlue, changeColor } from '../Visualizer'
 
 export const title = 'INSERTION SORT' 
 
@@ -19,22 +19,43 @@ const insertIBeforeJ = (sortedIndices, i, j) => {
     return beforeJ.concat(removeI.slice(j)) 
 } 
 
-export const sort = async data => { 
-    console.log(data) 
+export const sort = async (data)  => { 
+    let steps = [] 
     let sortedIndices = [...Array(data.length).keys()]
     for (let i = 0; i < data.length; i++) { 
-        changeColor(i, green) 
+        //changeColor(i, green) 
+        steps.push({ 
+            func: changeColor, 
+            args: [i, green],  
+        })
         const current = data[i]
         let j = i-1
         while ((j>-1) && (current < data[sortedIndices[j]])) { 
-            changeColor(sortedIndices[j], darkBlue) 
-            await delay() 
-            changeColor(sortedIndices[j], lightBlue) 
+            steps.push({ 
+                func: changeColor, 
+                args: [sortedIndices[j], darkBlue] 
+            })
+            //changeColor(sortedIndices[j], darkBlue) 
+            //await delay() 
+            //changeColor(sortedIndices[j], lightBlue) 
+            steps.push({ 
+                func: changeColor, 
+                args: [sortedIndices[j], lightBlue] 
+            })
             j--
         } 
         j++ 
-        insertBefore(i, sortedIndices[j]) 
+        //insertBefore(i, sortedIndices[j])
+        steps.push({ 
+            func: insertBefore, 
+            args: [i, sortedIndices[j]] 
+        })
+        //changeColor(i, lightBlue)   
+        steps.push({ 
+            func: changeColor, 
+            args: [i, lightBlue] 
+        })
         sortedIndices = insertIBeforeJ(sortedIndices,i,j) 
-        changeColor(i, lightBlue)  
     }
+    return steps 
 }

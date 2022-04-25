@@ -5,10 +5,8 @@
 }
 
 .Visualizer-main { 
-    /* border-style: solid;  */
     margin-top: 10px;
     width: 600px; 
-    /* background-color: white; */
 }
 
 .Visualizer header { 
@@ -44,7 +42,7 @@ header header {
     margin-bottom: -3px;
     border-width: 3px; 
     border-bottom-style: solid; 
-    border-image: linear-gradient(to right, #fbc2eb 0%, #a6c1ee 51%, #fbc2eb 100%);    border-image: linear-gradient(to right, #fbc2eb 0%, #a6c1ee 51%, #fbc2eb 100%);
+    border-image: linear-gradient(to right, #fbc2eb 0%, #a6c1ee 51%, #fbc2eb 100%);
     border-image-slice: 1; 
 }
 
@@ -52,7 +50,7 @@ header header {
     margin-top: 20px; 
 }
 
-.Visualizer input { 
+.Visualizer #dataInput { 
     border: 2px solid var(--gray-color);
     outline: none; 
     width: 496px; 
@@ -63,8 +61,8 @@ header header {
     font-family: 'Quicksand', sans-serif; 
 }
 
-.Visualizer input:focus { 
-    border: 2px solid var(--border-color)
+.Visualizer #dataInput:focus { 
+    border: 2px solid var(--border-color); 
 }
 
 .Visualizer button { 
@@ -104,7 +102,8 @@ header header {
     z-index: 1; 
     margin-top: auto;
     transition: all 1s ease; 
-    transform: translateX(0)
+    margin-left: 2px; 
+    margin-right: 2px; 
 }
 
 #visualizer .bar { 
@@ -115,3 +114,29 @@ header header {
 #visualizer .bar:hover { 
     background-color: var(--border-hover-color)!important;
 }
+  #slider {
+    width: 200px;
+    height: 5px;
+    border-radius: 5px;  
+    background: #ffffff;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+  }
+  
+  #slider::-webkit-slider-thumb {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%; 
+    background: var(--border-color);
+    cursor: pointer;
+  }
+  
+  #slider::-moz-range-thumb {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background: var(--border-color);
+    cursor: pointer;
+  }

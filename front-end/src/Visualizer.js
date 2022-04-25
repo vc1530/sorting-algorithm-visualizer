@@ -8,18 +8,22 @@ export const changeColor = (i, color) => {
     const e = document.getElementById(`e${i}`)
     e.lastChild.style.backgroundColor = color
 }
-export const delay = () => {
+export const delay = speed => {
     return new Promise(resolve => setTimeout(() => {
       resolve();
-    }, 100)); 
+    }, speed * 2.5)); 
 }
 
 const Visualizer = props => { 
 
+    let i = 0
+    let steps = []
+    let play = false 
+    let speed 
     const [input, setInput] = useState('')  
     const [data, setData] = useState([]) 
     const [sort, setSort] = useState(() => () => {})
-    const getData = (input) => { 
+    const getData = input => { 
         const data = input.split(',') 
         data.forEach((element, i) => { 
             data[i] = parseInt(element) 
@@ -27,15 +31,35 @@ const Visualizer = props => {
         setData(data) 
     }
 
-    useEffect(() => { 
+    useEffect(() => {  
+
+        disableBtn('pause-play') 
+        disableBtn('next') 
+
         if (props.sort) { 
+
+            console.log(props.sort) 
             import(`./sorts/${props.sort}`)
             .then(async (Sort)=> { 
+                await setUp()
                 slideTitle(Sort.title) 
-                await setSort(() => Sort.sort) 
+                setSort(() => Sort.sort)  
             })
-        } 
+        }
+        //eslint-disable-next-line
     }, [props.sort])
+
+    const disableBtn = (id) => { 
+        const btn = document.getElementById(id) 
+        btn.style.backgroundImage = "linear-gradient(to right, rgba(153,153,153,1) 0%, rgba(187,187,187,1) 51%, rgba(216,216,216,1) 100%)"
+        btn.disabled = true
+    }
+
+    const enableBtn = (id) => { 
+        const btn = document.getElementById(id) 
+        btn.style.backgroundImage = "linear-gradient(to right, #fbc2eb 0%, #a6c1ee 51%, #fbc2eb 100%)" 
+        btn.disabled = false 
+    }
 
     const slideTitle = (title) => { 
         const titleBar = document.getElementById('Visualizer-title') 
@@ -46,22 +70,24 @@ const Visualizer = props => {
         titleParent.appendChild(titleBar) 
     }
 
-    const handleSave = e => { 
-        e.preventDefault() 
+    const setUp = async () => { 
+        play = false 
+        steps = [] 
+        i = 0 
+        if (props.sort && data.length > 0) {
+            enableBtn('pause-play') 
+            enableBtn('next') 
+            document.querySelector(`#pause-play`).innerHTML = "Sort"
+        } 
 
         const visualizer = document.getElementById("visualizer") 
         while (visualizer.firstChild) 
             visualizer.removeChild(visualizer.firstChild) 
-
         const max = Math.max(...data)
-        
         data.forEach((element, i) => { 
-
             const barComp = document.createElement("div")
             barComp.className = "barComp"         
             barComp.id = `e${i}`
-            barComp.style.marginLeft = "5px" 
-            barComp.style.marginRIght = "5px"
             barComp.style.width = "15px"
 
             const num = document.createElement("p") 
@@ -70,7 +96,8 @@ const Visualizer = props => {
             const bar = document.createElement("div") 
             bar.className = "bar" 
             bar.style.height = `${element/max * 300}px`
-             
+            bar.style.backgroundColor = lightBlue
+
             barComp.style.height = `${element/max * 300 + 10}px`
             barComp.appendChild(num) 
             barComp.appendChild(bar) 
@@ -80,14 +107,60 @@ const Visualizer = props => {
         })
     }
 
-    const handleClick = async () => { 
-        await sort(data)
-        endSort()
+    // const handleSetUp = async () => { 
+        // play = false 
+        // steps = [] 
+        // i = 0 
+        // if (props.sort && data.length > 0) {
+        //     enableBtn('pause-play') 
+        //     enableBtn('next') 
+        //     document.querySelector(`#pause-play`).innerHTML = "Sort"
+        // } 
+    //     setUp() 
+    // }
+
+    // const handleSave = async e => { 
+    //     e.preventDefault() 
+        //steps = await sort(data) 
+        // if (props.sort) {
+        //     enableBtn('pause-play') 
+        //     document.querySelector(`#pause-play`).innerHTML = "Sort"
+        //     enableBtn('next') 
+        // } 
+        // play = false
+        // i = 0 
+        // setUp() 
+    //     await setUp() 
+    // }
+
+    const Sort = async () => { 
+        if (steps.length === 0) steps = await sort(data) 
+        if (play) { 
+            await sortStep() 
+            if (!speed) speed = 50
+            setTimeout(Sort, (100-speed) * 5) 
+        } 
+    }
+
+    const sortStep = async () => {
+        if ((!steps) || i >= steps.length) { 
+            endSort() 
+            return 
+        } 
+        const step = steps[i] 
+        step.func(step.args[0], step.args[1]) 
+        i++
     }
 
     const endSort = () => { 
-        for (let i = 0; i < data.length; i ++) { 
-            const e = document.getElementById(`e${i}`) 
+        disableBtn('pause-play') 
+        disableBtn('next') 
+        document.querySelector(`#pause-play`).innerHTML = "Sort"
+        play = false 
+        i = 0 
+        steps = [] 
+        for (let j = 0; j < data.length; j ++) { 
+            const e = document.getElementById(`e${j}`) 
             e.lastChild.style.backgroundColor = lightBlue
         }
     }
@@ -105,19 +178,62 @@ const Visualizer = props => {
             <div className = "Visualizer-main">
                 <div id = "visualizer"> 
                 </div>
-                <form onSubmit = {handleSave} > 
+                <form onSubmit = {
+                    async e => {
+                        e.preventDefault() 
+                        await setUp() 
+                    }} > 
                     <input
+                        id = "dataInput" 
                         type = "text" 
                         placeholder = "Please enter values separated by commas. (Ex. 4,10,7,3,2,9,8,1,6)" 
                         value = {input} 
-                        onChange = {e => { 
-                            setInput(e.target.value)
-                            getData(e.target.value) 
-                        }} 
+                        onChange = {
+                            e => { 
+                                setInput(e.target.value) 
+                                getData(e.target.value)
+                        }}
                     /> 
                     <button> Save </button>
                 </form>
-                <button onClick = {handleClick}> Sort </button>
+                <button onClick = {
+                    () => { 
+                        play = !play 
+                        if (play === true) { 
+                            disableBtn('next') 
+                            document.querySelector(`#pause-play`).innerHTML = "Pause"
+                            Sort() 
+                        }
+                        else { 
+                            enableBtn('next') 
+                            document.querySelector(`#pause-play`).innerHTML = "Play"
+                        }
+                        // if (play === true) {
+                        //     play = false
+                        //     enableBtn('next') 
+                        //     document.querySelector(`#pause-play`).innerHTML = "Play"
+                        // } 
+                        // else { 
+                        //     play = true
+                        //     disableBtn('next') 
+                        //     document.querySelector(`#pause-play`).innerHTML = "Pause"
+                        //     Sort() 
+                        // }
+                    }}
+                    id = "pause-play"
+                >Sort</button>
+                <button id = 'next' onClick = {sortStep}> Next </button>
+                <div className="slidecontainer">
+                    <input 
+                        type="range" 
+                        min="0" 
+                        max="99" 
+                        defaultValue = "50" 
+                        value={speed} 
+                        onChange = {e => {speed = e.target.value}} 
+                        id="slider"
+                    />
+                </div>
             </div>
         </main>
     )

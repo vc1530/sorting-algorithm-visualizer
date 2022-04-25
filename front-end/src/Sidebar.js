@@ -46,8 +46,8 @@ const Sidebar = props => {
                     <div className = "sort-dropdown"> 
                         <p onClick = {()=>props.getSort('InsertionSort')}>INSERTION SORT</p>
                         <div className = "sort-info"> 
-                            Cause we were kissing. I had a fever. 
-                            Until I met you. Now you make me cool. 
+                            Listen boy. My first love story. My angel and my girls. My sunshine! 
+                            Uh, uh. Let's go! 
                         </div>
                     </div>
                 </div>
