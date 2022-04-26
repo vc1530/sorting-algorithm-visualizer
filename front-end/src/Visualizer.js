@@ -20,28 +20,30 @@ const Visualizer = props => {
     let steps = []
     let play = false 
     let speed 
+    //const [showSpeed, setShowSpeed] = useState(50) 
     const [input, setInput] = useState('')  
     const [data, setData] = useState([]) 
     const [sort, setSort] = useState(() => () => {})
     const getData = input => { 
         const data = input.split(',') 
-        data.forEach((element, i) => { 
-            data[i] = parseInt(element) 
+        data.forEach((element, j) => { 
+            data[j] = parseInt(element) 
         })
         setData(data) 
     }
 
     useEffect(() => {  
 
+        // endSort() 
         disableBtn('pause-play') 
         disableBtn('next') 
 
         if (props.sort) { 
-
-            console.log(props.sort) 
             import(`./sorts/${props.sort}`)
             .then(async (Sort)=> { 
+                //setShowSpeed(50) 
                 await setUp()
+                document.querySelector('#slider').value = speed
                 slideTitle(Sort.title) 
                 setSort(() => Sort.sort)  
             })
@@ -71,9 +73,9 @@ const Visualizer = props => {
     }
 
     const setUp = async () => { 
-        play = false 
+        play = false
         steps = [] 
-        i = 0 
+        i=0 
         if (props.sort && data.length > 0) {
             enableBtn('pause-play') 
             enableBtn('next') 
@@ -81,8 +83,10 @@ const Visualizer = props => {
         } 
 
         const visualizer = document.getElementById("visualizer") 
+
         while (visualizer.firstChild) 
-            visualizer.removeChild(visualizer.firstChild) 
+            visualizer.removeChild(visualizer.firstChild)
+
         const max = Math.max(...data)
         data.forEach((element, i) => { 
             const barComp = document.createElement("div")
@@ -143,6 +147,7 @@ const Visualizer = props => {
     }
 
     const sortStep = async () => {
+        console.log(i) 
         if ((!steps) || i >= steps.length) { 
             endSort() 
             return 
@@ -157,7 +162,7 @@ const Visualizer = props => {
         disableBtn('next') 
         document.querySelector(`#pause-play`).innerHTML = "Sort"
         play = false 
-        i = 0 
+        i = 0
         steps = [] 
         for (let j = 0; j < data.length; j ++) { 
             const e = document.getElementById(`e${j}`) 
@@ -176,63 +181,58 @@ const Visualizer = props => {
                 </div>
             </header>
             <div className = "Visualizer-main">
-                <div id = "visualizer"> 
+                <div className = "Visualizer-form"> 
+                    <div id = "visualizer"> 
+                    </div>
+                    <form onSubmit = {
+                        async e => {
+                            e.preventDefault() 
+                            await setUp() 
+                        }} > 
+                        <input
+                            id = "dataInput" 
+                            type = "text" 
+                            placeholder = "Please enter values separated by commas. (Ex. 4,10,7,3,2,9,8,1,6)" 
+                            value = {input} 
+                            onChange = {
+                                e => { 
+                                    setInput(e.target.value) 
+                                    getData(e.target.value)
+                            }}
+                        /> 
+                        <button> Save </button>
+                    </form>
                 </div>
-                <form onSubmit = {
-                    async e => {
-                        e.preventDefault() 
-                        await setUp() 
-                    }} > 
-                    <input
-                        id = "dataInput" 
-                        type = "text" 
-                        placeholder = "Please enter values separated by commas. (Ex. 4,10,7,3,2,9,8,1,6)" 
-                        value = {input} 
-                        onChange = {
-                            e => { 
-                                setInput(e.target.value) 
-                                getData(e.target.value)
-                        }}
-                    /> 
-                    <button> Save </button>
-                </form>
-                <button onClick = {
-                    () => { 
-                        play = !play 
-                        if (play === true) { 
-                            disableBtn('next') 
-                            document.querySelector(`#pause-play`).innerHTML = "Pause"
-                            Sort() 
-                        }
-                        else { 
-                            enableBtn('next') 
-                            document.querySelector(`#pause-play`).innerHTML = "Play"
-                        }
-                        // if (play === true) {
-                        //     play = false
-                        //     enableBtn('next') 
-                        //     document.querySelector(`#pause-play`).innerHTML = "Play"
-                        // } 
-                        // else { 
-                        //     play = true
-                        //     disableBtn('next') 
-                        //     document.querySelector(`#pause-play`).innerHTML = "Pause"
-                        //     Sort() 
-                        // }
-                    }}
-                    id = "pause-play"
-                >Sort</button>
-                <button id = 'next' onClick = {sortStep}> Next </button>
-                <div className="slidecontainer">
-                    <input 
-                        type="range" 
-                        min="0" 
-                        max="99" 
-                        defaultValue = "50" 
-                        value={speed} 
-                        onChange = {e => {speed = e.target.value}} 
-                        id="slider"
-                    />
+                <div className = 'Visualizer-controls'> 
+                    <div className="slidecontainer">
+                        <input 
+                            type="range" 
+                            min="0" 
+                            max="99" 
+                            defaultValue = "50" 
+                            value={speed} 
+                            onChange = {e => speed = e.target.value} 
+                            id="slider"
+                        />
+                    </div>
+                    <div id = 'sort-next-btns'> 
+                        <button onClick = {
+                            () => { 
+                                play = !play 
+                                if (play === true) { 
+                                    disableBtn('next') 
+                                    document.querySelector(`#pause-play`).innerHTML = "Pause"
+                                    Sort() 
+                                }
+                                else { 
+                                    enableBtn('next') 
+                                    document.querySelector(`#pause-play`).innerHTML = "Play"
+                                }
+                            }}
+                            id = "pause-play"
+                        >Sort</button>
+                        <button id = 'next' onClick = {sortStep}> Next </button>
+                    </div>
                 </div>
             </div>
         </main>
