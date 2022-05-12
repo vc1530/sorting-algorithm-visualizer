@@ -4,6 +4,7 @@ import { useState, useEffect} from 'react'
 export const lightBlue = "#ABDAFC"
 export const darkBlue = "#58b9ff"
 export const green = "#78C091"
+export const lightGreen = "#C5EFCB"
 export const changeColor = (i, color) => { 
     const e = document.getElementById(`e${i}`)
     e.lastChild.style.backgroundColor = color
@@ -11,7 +12,7 @@ export const changeColor = (i, color) => {
 export const delay = speed => {
     return new Promise(resolve => setTimeout(() => {
       resolve();
-    }, speed * 2.5)); 
+    }, 100)); 
 }
 
 const Visualizer = props => { 
@@ -20,7 +21,6 @@ const Visualizer = props => {
     let steps = []
     let play = false 
     let speed 
-    //const [showSpeed, setShowSpeed] = useState(50) 
     const [input, setInput] = useState('')  
     const [data, setData] = useState([]) 
     const [sort, setSort] = useState(() => () => {})
@@ -34,16 +34,13 @@ const Visualizer = props => {
 
     useEffect(() => {  
 
-        // endSort() 
         disableBtn('pause-play') 
         disableBtn('next') 
 
-        if (props.sort) { 
+        if (props.sort) {  
             import(`./sorts/${props.sort}`)
             .then(async (Sort)=> { 
-                //setShowSpeed(50) 
                 await setUp()
-                document.querySelector('#slider').value = speed
                 slideTitle(Sort.title) 
                 setSort(() => Sort.sort)  
             })
@@ -73,15 +70,16 @@ const Visualizer = props => {
     }
 
     const setUp = async () => { 
+        document.querySelector('#slider').value = speed
         play = false
         steps = [] 
         i=0 
-        if (props.sort && data.length > 0) {
+        
+        if (props.sort && (data.length > 0)) {
             enableBtn('pause-play') 
             enableBtn('next') 
             document.querySelector(`#pause-play`).innerHTML = "Sort"
         } 
-
         const visualizer = document.getElementById("visualizer") 
 
         while (visualizer.firstChild) 
@@ -111,32 +109,6 @@ const Visualizer = props => {
         })
     }
 
-    // const handleSetUp = async () => { 
-        // play = false 
-        // steps = [] 
-        // i = 0 
-        // if (props.sort && data.length > 0) {
-        //     enableBtn('pause-play') 
-        //     enableBtn('next') 
-        //     document.querySelector(`#pause-play`).innerHTML = "Sort"
-        // } 
-    //     setUp() 
-    // }
-
-    // const handleSave = async e => { 
-    //     e.preventDefault() 
-        //steps = await sort(data) 
-        // if (props.sort) {
-        //     enableBtn('pause-play') 
-        //     document.querySelector(`#pause-play`).innerHTML = "Sort"
-        //     enableBtn('next') 
-        // } 
-        // play = false
-        // i = 0 
-        // setUp() 
-    //     await setUp() 
-    // }
-
     const Sort = async () => { 
         if (steps.length === 0) steps = await sort(data) 
         if (play) { 
@@ -147,13 +119,14 @@ const Visualizer = props => {
     }
 
     const sortStep = async () => {
-        console.log(i) 
+        if (steps.length === 0) steps = await sort(data) 
         if ((!steps) || i >= steps.length) { 
             endSort() 
             return 
         } 
-        const step = steps[i] 
-        step.func(step.args[0], step.args[1]) 
+        const step = steps[i]
+        for (let j = 0; j < step.length; j ++) 
+            step[j].func(step[j].args[0], step[j].args[1]) 
         i++
     }
 

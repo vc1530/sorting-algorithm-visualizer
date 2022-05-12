@@ -139,7 +139,7 @@ header header {
     display: flex; 
     flex-direction: column;
     justify-content: left;
-    margin-left: 30px; 
+    margin-left: 40px; 
     width: 200px; 
 }
 
