@@ -1,7 +1,7 @@
 import './About.css' 
 import Header from './Header' 
 import { useLocation } from 'react-router-dom' 
-import me from './me.jpeg'
+import me from './me.png'
 import { AiOutlineInstagram, AiOutlineLinkedin, AiFillGithub } from 'react-icons/ai'
 
 const About = props => {
@@ -56,44 +56,9 @@ const About = props => {
                         </nav>
                     </div> 
                     <div className = "About-bio"> 
-                        <h2>Waiting Room</h2>
+                        <h2>Loreum ipsum</h2>
                         <p> 
-                            If you were a teacher, I would
-                            Fail your class
-                            Take it over and over, until you noticed me
-                            If you were a waiting room, I would
-                            Never see a doctor, I would
-                            Sit there with my first aid kit and bleed
-                            I want to be the power ballad that lifts you up and holds you down
-                            I want to be the broken love song that feeds your misery
-                            And I can wish all that I want
-                            But it won't bring us together
-                            Plus, I know whatever happens to me
-                            I know it's for the better
-                            And when broken bodies are
-                            Washed ashore
-                            Who am I to ask for more, more, more?
-                            But you're breathing in my
-                            Open mouth, you're the
-                            Gun in my lips that will blow my brains out
-                            I want to make you drive all night
-                            Just because I said
-                            Maybe you should come over
-                            Want to make you fall in love
-                            As hard as my poor, parent's teenage daughter
-                            She'll be the best you ever had if you let her
-                            I know it's for the better
-                            Know it's for the better
-                            Know it's for the better
-                            Know it's for the better
-                            Know it's for the better
-                            Know it's for the better
-                            Know it's for the better
-                            Know it's for the better
-                            Know it's for the better
-                            Know it's for the better
-                            Know it's for the better
-                            Know it's for the better
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
                         </p>
                     </div>
                 </div> 

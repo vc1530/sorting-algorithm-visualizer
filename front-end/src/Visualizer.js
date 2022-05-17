@@ -1,19 +1,6 @@
 import './Visualizer.css' 
 import { useState, useEffect} from 'react' 
-
-export const lightBlue = "#ABDAFC"
-export const darkBlue = "#58b9ff"
-export const green = "#78C091"
-export const lightGreen = "#C5EFCB"
-export const changeColor = (i, color) => { 
-    const e = document.getElementById(`e${i}`)
-    e.lastChild.style.backgroundColor = color
-}
-export const delay = speed => {
-    return new Promise(resolve => setTimeout(() => {
-      resolve();
-    }, 100)); 
-}
+import { lightBlue } from './Helper'
 
 const Visualizer = props => { 
 

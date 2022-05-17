@@ -125,6 +125,7 @@ header header {
 #visualizer .bar { 
     margin-top: -15px; 
     background-color: var(--border-color);
+    border-radius: 3px;
 }
 
 #visualizer .bar:hover { 
