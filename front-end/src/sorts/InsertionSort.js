@@ -14,7 +14,7 @@ export const sort = async (data)  => {
             }
         ]
         if (i !== 0) { 
-            step.unshift({ 
+            step.push({ 
                 func: changeColor, 
                 args: [i - 1, lightBlue], 
             })
@@ -29,15 +29,14 @@ export const sort = async (data)  => {
                     args: [sortedIndices[j], darkBlue], 
                 }, 
             ]
-            if (j !== (i-1)) step.unshift( 
-                { 
-                    func: changeColor, 
-                    args: [sortedIndices[j+1], lightBlue]
-                }
-            )
-            steps.push(
-                step
-            )
+            if (j !== (i-1)) 
+                step.push( 
+                    { 
+                        func: changeColor, 
+                        args: [sortedIndices[j+1], lightBlue]
+                    }
+                )
+            steps.push(step)
             j--
         } 
         j++ 

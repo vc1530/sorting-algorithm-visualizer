@@ -10,7 +10,7 @@ const Visualizer = props => {
     let speed 
     const [input, setInput] = useState('')  
     const [data, setData] = useState([]) 
-    const [sort, setSort] = useState(() => () => {})
+    const [sort, setSort] = useState(() => async () => {})
     const getData = input => { 
         const data = input.split(',') 
         data.forEach((element, j) => { 
@@ -57,6 +57,7 @@ const Visualizer = props => {
     }
 
     const setUp = async () => { 
+
         document.querySelector('#slider').value = speed
         play = false
         steps = [] 
@@ -67,6 +68,7 @@ const Visualizer = props => {
             enableBtn('next') 
             document.querySelector(`#pause-play`).innerHTML = "Sort"
         } 
+
         const visualizer = document.getElementById("visualizer") 
 
         while (visualizer.firstChild) 

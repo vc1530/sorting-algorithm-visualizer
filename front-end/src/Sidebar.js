@@ -35,8 +35,7 @@ const Sidebar = props => {
                     <div className = "sort-dropdown"> 
                         <p onClick = {()=>props.getSort('QuickSort')}>QUICK SORT</p>
                         <div className = "sort-info"> 
-                            We had a great day. Even though we forgot to eat. 
-                            And you had a bad dream. And we got no sleep. 
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
                         </div>
                     </div>
                 </div>
@@ -46,8 +45,7 @@ const Sidebar = props => {
                     <div className = "sort-dropdown"> 
                         <p onClick = {()=>props.getSort('InsertionSort')}>INSERTION SORT</p>
                         <div className = "sort-info"> 
-                            Listen boy. My first love story. My angel and my girls. My sunshine! 
-                            Uh, uh. Let's go! 
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
                         </div>
                     </div>
                 </div>
@@ -57,7 +55,7 @@ const Sidebar = props => {
                     <div className = "sort-dropdown">
                         <p onClick = {()=>props.getSort('MergeSort')}>MERGE SORT</p>
                         <div className = "sort-info"> 
-                            Sometimes I still do. Something embarassing. 
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
                         </div>
                     </div>
                 </div>
@@ -67,8 +65,7 @@ const Sidebar = props => {
                     <div className = "sort-dropdown">
                         <p onClick = {()=>props.getSort('BubbleSort')}>BUBBLE SORT</p>
                         <div className = "sort-info"> 
-                            I never said I'd be alright. Just thought I could hold myself together. 
-                            But I couldn't breathe, I went outside. Don't know why I thought it'd be any better. 
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
                         </div>
                     </div>
                 </div>
@@ -78,9 +75,7 @@ const Sidebar = props => {
                     <div className = "sort-dropdown">
                         <p onClick = {()=>props.getSort('SelectionSort')}>SELECTION SORT</p>
                         <div className = "sort-info"> 
-                            I'm fine now, it doesn't matter. 
-                            I didn't wanna be this guy. I cried at your show with the teenagers. 
-                            Tell your friend I'll be alright. In the morning, it won't matter. 
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
                         </div>
                     </div>
                 </div>
@@ -90,8 +85,7 @@ const Sidebar = props => {
                     <div className = "sort-dropdown">
                         <p onClick = {()=>props.getSort('HeapSort')}>HEAP SORT</p>
                         <div className = "sort-info"> 
-                            I wanna be emaciated. I wanna hear one song without thinking of you. 
-                            I wish I was on a space ship, just me and my dog and an impossible view. 
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
                         </div>
                     </div>
                 </div>
