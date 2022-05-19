@@ -30,3 +30,42 @@ export const insertIBeforeJ = (sortedIndices, i, j) => {
     beforeJ.push(tmp) 
     return beforeJ.concat(removeI.slice(j)) 
 } 
+
+//for recursive algorithms 
+export const unpackSteps = (steps) => { 
+    let newSteps = [] 
+    for (let i = 0; i < steps.length; i ++) { 
+        let currentLevel = mergeArrays(steps[i])
+        for (let j = 0; j < currentLevel.length; j ++) 
+            newSteps.push(currentLevel[j]) 
+    }
+    return newSteps
+}
+
+export const mergeArrays = (arr) => { 
+    if (arr.length === 1) 
+        return arr[0]
+
+    let newArr = []  
+    let m = Math.floor(arr.length/2) 
+    let left = mergeArrays(arr.splice(0, m)) 
+    let right = mergeArrays(arr) 
+
+    while (left.length && right.length) { 
+        let step = [] 
+        let a = left.shift() 
+        let b = right.shift() 
+        for (let i = 0; i < a.length; i ++) 
+            step.push(a[i]) 
+        for (let j = 0; j < b.length; j ++) 
+            step.push(b[j]) 
+        newArr.push(step) 
+    }
+
+    while (left.length) 
+        newArr.push(left.shift()) 
+    while (right.length)
+        newArr.push(right.shift()) 
+
+    return newArr 
+}
