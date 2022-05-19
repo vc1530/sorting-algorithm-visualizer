@@ -30,4 +30,3 @@ export const insertIBeforeJ = (sortedIndices, i, j) => {
     beforeJ.push(tmp) 
     return beforeJ.concat(removeI.slice(j)) 
 } 
-
