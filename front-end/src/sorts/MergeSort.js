@@ -1,5 +1,5 @@
-import { green, lightBlue, changeColor, darkBlue, insertIBeforeJ } from '../Helper'
-import { insertBefore } from '../Helper'
+import { green, lightBlue, changeColor, darkBlue } from '../Helper'
+import { insertBefore, insertIBeforeJ } from '../Helper'
 
 let steps = [] 
 let root = null 
