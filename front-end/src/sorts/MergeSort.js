@@ -1,22 +1,24 @@
 import { green, lightBlue, changeColor, darkBlue } from '../Helper'
-import { insertBefore, insertIBeforeJ } from '../Helper'
+import { insertBefore, insertIBeforeJ, unpackSteps } from '../Helper'
 
 let steps = [] 
 let root = null 
 let sortedIndices = [] 
+let data = [] 
 
 export const title = "MERGE SORT" 
 
-export const sort = async (data) => { 
+export const sort = async (visualizerData) => { 
     steps = [] 
     root = {} 
+    data = visualizerData 
     sortedIndices = [...Array(data.length).keys()]
     
     let height = Math.floor(Math.log2(data.length)) 
     if (Math.log(data.length)/Math.log(2) % 1 !== 0)
         height++ 
     
-    root = mergeSort(data, 0, data.length)
+    root = mergeSort(0, data.length)
     convertToSteps(root, height)  
     steps = unpackSteps(steps) 
     return steps   
@@ -28,48 +30,10 @@ const convertToSteps = (node, depth) => {
     convertToSteps(node.left, depth - 1) 
     convertToSteps(node.right, depth - 1) 
     steps[depth].push(node.steps) 
-    return 
+    return  
 }
 
-const unpackSteps = (steps) => { 
-    let newSteps = [] 
-    for (let i = 0; i < steps.length; i ++) { 
-        let currentLevel = mergeArrays(steps[i])
-        for (let j = 0; j < currentLevel.length; j ++) 
-            newSteps.push(currentLevel[j]) 
-    }
-    return newSteps
-}
-
-const mergeArrays = (arr) => { 
-    if (arr.length === 1) 
-        return arr[0]
-
-    let newArr = []  
-    let m = Math.floor(arr.length/2) 
-    let left = mergeArrays(arr.splice(0, m)) 
-    let right = mergeArrays(arr) 
-
-    while (left.length && right.length) { 
-        let step = [] 
-        let a = left.shift() 
-        let b = right.shift() 
-        for (let i = 0; i < a.length; i ++) 
-            step.push(a[i]) 
-        for (let j = 0; j < b.length; j ++) 
-            step.push(b[j]) 
-        newArr.push(step) 
-    }
-
-    while (left.length) 
-        newArr.push(left.shift()) 
-    while (right.length)
-        newArr.push(right.shift()) 
-
-    return newArr 
-}
-
-const mergeSort = (data, lo, hi) => { 
+const mergeSort = (lo, hi) => { 
     let node = { 
         steps: [], 
         left: null, 
@@ -89,15 +53,15 @@ const mergeSort = (data, lo, hi) => {
         return node 
     } 
     let m = lo + Math.floor((hi - lo)/2) 
-    let left = mergeSort(data, lo, m) 
+    let left = mergeSort(lo, m) 
     if (left) node.left = left
-    let right = mergeSort(data, m, hi) 
+    let right = mergeSort(m, hi) 
     if (right) node.right = right 
-    node.steps = merge(data, lo, m, m, hi)   
+    node.steps = merge(lo, m, m, hi)   
     return node 
 }
 
-const merge = (data, lo1, hi1, lo2, hi2) => { 
+const merge = (lo1, hi1, lo2, hi2) => { 
 
     let step = [] 
 

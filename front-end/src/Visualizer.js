@@ -26,7 +26,7 @@ const Visualizer = props => {
 
         if (props.sort) {  
             import(`./sorts/${props.sort}`)
-            .then(async (Sort)=> { 
+            .then(async (Sort)=> {  
                 await setUp()
                 slideTitle(Sort.title) 
                 setSort(() => Sort.sort)  
