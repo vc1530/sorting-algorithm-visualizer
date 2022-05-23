@@ -1,0 +1,18 @@
+.Home-main { 
+    -webkit-animation: slideRight 1s forwards;
+    -moz-animation: slideRight 1s forwards;
+    animation: slideRight 1s forwards;
+    margin-top: 125px; 
+    margin-left: 65px; 
+    display: flex;
+    flex-direction: row;
+}
+
+.Home-sidebars { 
+    display: flex;
+    flex-direction: column;
+}
+
+.Algo-sidebar { 
+    margin-bottom: 30px; 
+}
