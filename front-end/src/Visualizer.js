@@ -28,6 +28,8 @@ const Visualizer = props => {
             import(`./sorts/${props.sort}`)
             .then(async (Sort)=> {  
                 await setUp()
+                props.getInfo(Sort.info) 
+                props.getCode(Sort.code) 
                 slideTitle(Sort.title) 
                 setSort(() => Sort.sort)  
             })
@@ -86,10 +88,10 @@ const Visualizer = props => {
 
             const bar = document.createElement("div") 
             bar.className = "bar" 
-            bar.style.height = `${element/max * 300}px`
+            bar.style.height = `${element/max * 350}px`
             bar.style.backgroundColor = lightBlue
 
-            barComp.style.height = `${element/max * 300 + 10}px`
+            barComp.style.height = `${element/max * 350 + 10}px`
             barComp.appendChild(num) 
             barComp.appendChild(bar) 
             barComp.style.animation = "grow 1s forwards"
@@ -135,6 +137,7 @@ const Visualizer = props => {
     return ( 
         <main className = "Visualizer">
             <header>
+            <link rel="shortcut icon" href="/../favicon.ico" type="image/x-icon" />
                 VISUALIZER&nbsp;
                 <div>
                     <header id = "Visualizer-title">

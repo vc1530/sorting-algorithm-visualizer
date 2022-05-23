@@ -61,7 +61,6 @@
     padding-bottom: 20px; 
     margin-left: 30px; 
     font-size: 14px; 
-    transition: .5s; 
 }
 
 .About-socials p { 
@@ -70,10 +69,9 @@
 }
 
 .About-socials:hover { 
-    color: var(--border-color); 
+    color: gray; 
     border-image: linear-gradient(to right, #fbc2eb 0%, #a6c1ee 51%, #fbc2eb 100%);    border-image: linear-gradient(to right, #fbc2eb 0%, #a6c1ee 51%, #fbc2eb 100%);
-    border-image-slice: 1; 
-    transition: .5s; 
+    border-image-slice: 1;  
 }
 
 .About-bio { 

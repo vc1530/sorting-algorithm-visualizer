@@ -1,17 +1,36 @@
 export const lightBlue = "#ABDAFC"
 export const darkBlue = "#58b9ff"
-export const green = "#78C091"
-export const lightGreen = "#C5EFCB"
+export const darkerBlue = "#129bfd"
+export const lightGreen = "#a0e9aa"
+export const darkGreen = "#43b051"
 
 export const changeColor = (i, color) => { 
     const e = document.getElementById(`e${i}`)
     e.lastChild.style.backgroundColor = color
 }
 
+export const tab = (<span>&emsp;&emsp;</span>)
+
+export const colorInline = (color, body) => { 
+    return (<span className = {color}>{body}</span>)
+}
+
 export const delay = speed => {
     return new Promise(resolve => setTimeout(() => {
       resolve();
     }, 100)); 
+}
+
+export const swap = (i,j) => { 
+    const visualizer = document.getElementById("visualizer") 
+    const ei = document.getElementById(`e${i}`)
+    const ej = document.getElementById(`e${j}`)
+    const sibi = ei.nextSibling 
+    const sibj = ej.nextSibling  
+    ei.style.animation = ""
+    ej.style.animation = "" 
+    visualizer.insertBefore(ej, sibi) 
+    visualizer.insertBefore(ei, sibj) 
 }
 
 export const insertBefore = (i,j) => { 

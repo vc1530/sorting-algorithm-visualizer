@@ -1,90 +1,37 @@
-.sidebar { 
-    width: fit-content; 
-    height: fit-content; 
-    /* margin-top: 50px; 
-    margin-left: 75px;  */
+.Sidebar { 
+    width: 300px; 
     display: flex; 
     flex-direction: column;
+    height: fit-content; 
     align-items: center;
+    justify-content: center;
+    margin-right: 60px; 
 }
 
-.sidebar header { 
+.Sidebar header { 
     font-size: 20px; 
     font-weight: 600; 
     font-style: italic; 
+    display: flex;
+    align-items: center;
 }
 
-#sidebar-algorithms { 
+.Sidebar-info { 
     border-radius: 20px; 
-    /* border-style: solid;  */
     border-color: var(--border-color); 
     margin-top: 10px; 
-    display: flex; 
-    flex-direction: column;
-    /* height: 500px; */
-    width: 200px; 
+    width: 275px; 
     background-color: white;
     box-shadow: 1.5px 1.5px 1.5px 1.5px var(--gray-color); 
-    padding-right: 20px; 
-    padding-bottom: 20px; 
-    height: fit-content; 
+    padding: 20px; 
+    overflow: hidden;
+    overflow: scroll; 
+    max-height: 350px; 
 }
 
-.sidebar-link { 
-    display: flex; 
-    flex-direction: row;
-    margin-left: 20px; 
-    font-weight: 600; 
-    /* transition: 1s;  */
-    /* -webkit-animation: slideDown 1s forwards;
+#info-about { 
+    -webkit-animation: slideDown 1s forwards;
     -moz-animation: slideDown 1s forwards;
-    animation: slideDown 1s forwards; */
-}
-
-.sidebar-link:first-child { 
-    margin-top: 10px; 
-}
-
-.sidebar-link u { 
-    font-size: 20px; 
-    margin-right: 10px; 
-    color: var(--border-color); 
-    text-decoration: none; 
-}
-
-.sidebar-link u:hover { 
-    color: var(--border-hover-color)
-}
-
-.sort-dropdown { 
-    display: flex; 
-    flex-direction: column;
-    margin-top: 10px;
-}
-
-.sort-dropdown p { 
-    display: flex; 
-    align-items: center;
-    margin-top: 0; 
-    margin-bottom: 0; 
-    height: 30px; 
-} 
-
-.sort-dropdown p:hover { 
-    color: var(--hover-color); 
-}
-
-.sidebar-plus { 
-    height: fit-content; 
-    margin-top: 12px; 
-}
-
-.sort-info { 
-    display: none; 
+    animation: slideDown 1s forwards;
     font-size: 14px; 
-    animation: fadeIn 1s;
-    -webkit-animation: fadeIn 1s;
-    -moz-animation: fadeIn 1s;
-    -o-animation: fadeIn 1s;
-    -ms-animation: fadeIn 1s;
 }

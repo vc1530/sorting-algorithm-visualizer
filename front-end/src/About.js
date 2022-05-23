@@ -2,7 +2,8 @@ import './About.css'
 import Header from './Header' 
 import { useLocation } from 'react-router-dom' 
 import me from './me.png'
-import { AiOutlineInstagram, AiOutlineLinkedin, AiFillGithub } from 'react-icons/ai'
+import { AiOutlineLinkedin, AiFillGithub } from 'react-icons/ai'
+import { MdOutlineAlternateEmail } from 'react-icons/md'
 
 const About = props => {
 
@@ -41,9 +42,9 @@ const About = props => {
                     <div className = "About-sidebar"> 
                         <img src = {me} alt = "me"/> 
                         <nav> 
-                            <div onClick = {() => handleClick("https://instagram.com/vnsachn")} className = "About-socials"> 
-                                <AiOutlineInstagram size = "25px" /> 
-                                <p>instagram</p>
+                            <div onClick = {() => handleClick("mailto: vc1530@nyu.edu")} className = "About-socials"> 
+                                <MdOutlineAlternateEmail size = "25px" /> 
+                                <p>email</p>
                             </div>
                             <div onClick = {() => handleClick("https://www.linkedin.com/in/vanessaschen/")} className = "About-socials">
                                 <AiOutlineLinkedin size = "25px" />

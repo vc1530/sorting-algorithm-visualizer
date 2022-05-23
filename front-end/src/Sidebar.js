@@ -1,98 +1,37 @@
-import './Sidebar.css' 
+import './Sidebar.css'
+import { BiCodeBlock } from 'react-icons/bi'
+import { lightBlue } from './Helper'
+import { useEffect } from 'react'
 
 const Sidebar = props => { 
 
-    const plusDegrees = [0, 0, 0, 0, 0, 0] 
+    useEffect(() => { 
+        const parents = document.getElementsByClassName('Sidebar-info') 
+        for (let i = 0; i < parents.length; i++) { 
+            const child = parents[i].firstChild
+            parents[i].removeChild(child)
+            parents[i].appendChild(child) 
+        }
+    })
 
-    const pluses = document.getElementsByClassName("sidebar-plus")
-    const dropdowns = document.getElementsByClassName("sort-info")
-
-    const handlePlusClick = i => { 
-        
-        pluses[i].style.transition = "all .5s" 
-        
-        if (plusDegrees[i] === 135) { 
-            pluses[i].style.transform = "rotate(0deg)" 
-            plusDegrees[i] = 0 
-            dropdowns[i].style.display = "none"
-        } 
-        else { 
-            pluses[i].style.transform = "rotate(135deg)" 
-            plusDegrees[i] = 135
-            dropdowns[i].style.display = "block"
-        } 
-    }
-
-    return (
-        <main className = "sidebar"> 
+    return ( 
+        <main className = 'Sidebar'>
             <header>
-                ALGORITHMS
+                <BiCodeBlock size = "25px" color = {lightBlue} />
+                &ensp;{props.title}
             </header>
-            <nav id = "sidebar-algorithms">
-
-                <div className = "sidebar-link"> 
-                    <u onClick = {() => handlePlusClick(0)} className = "sidebar-plus">+</u> 
-                    <div className = "sort-dropdown"> 
-                        <p onClick = {()=>props.getSort('QuickSort')}>QUICK SORT</p>
-                        <div className = "sort-info"> 
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                        </div>
-                    </div>
+            <div className = "Sidebar-info"> 
+                <div id = 'info-about'>
+                    {props.info && props.code? 
+                        <span > 
+                            {props.info} 
+                            {props.code}
+                        </span>: 
+                        <span>Select an algorithm above to get started!</span> }
                 </div>
-
-                <div className = "sidebar-link"> 
-                    <u onClick = {() => handlePlusClick(1)} className = "sidebar-plus">+</u> 
-                    <div className = "sort-dropdown"> 
-                        <p onClick = {()=>props.getSort('InsertionSort')}>INSERTION SORT</p>
-                        <div className = "sort-info"> 
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                        </div>
-                    </div>
-                </div>
-
-                <div className = "sidebar-link"> 
-                    <u onClick = {() => handlePlusClick(2)} className = "sidebar-plus">+</u> 
-                    <div className = "sort-dropdown">
-                        <p onClick = {()=>props.getSort('MergeSort')}>MERGE SORT</p>
-                        <div className = "sort-info"> 
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                        </div>
-                    </div>
-                </div>
-
-                <div className = "sidebar-link"> 
-                    <u onClick = {() => handlePlusClick(3)} className = "sidebar-plus">+</u> 
-                    <div className = "sort-dropdown">
-                        <p onClick = {()=>props.getSort('BubbleSort')}>BUBBLE SORT</p>
-                        <div className = "sort-info"> 
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                        </div>
-                    </div>
-                </div>
-
-                <div className = "sidebar-link"> 
-                    <u onClick = {() => handlePlusClick(4)} className = "sidebar-plus">+</u> 
-                    <div className = "sort-dropdown">
-                        <p onClick = {()=>props.getSort('SelectionSort')}>SELECTION SORT</p>
-                        <div className = "sort-info"> 
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                        </div>
-                    </div>
-                </div>
-
-                <div className = "sidebar-link"> 
-                    <u onClick = {() => handlePlusClick(5)} className = "sidebar-plus">+</u> 
-                    <div className = "sort-dropdown">
-                        <p onClick = {()=>props.getSort('HeapSort')}>HEAP SORT</p>
-                        <div className = "sort-info"> 
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                        </div>
-                    </div>
-                </div>
-
-            </nav>
+            </div>
         </main>
     )
 }
 
-export default Sidebar 
+export default Sidebar
