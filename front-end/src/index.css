@@ -119,7 +119,7 @@ body {
 
 @-webkit-keyframes slideDown {
   0% {
-    transform: translateY(-50px);
+    transform: translateY(-100%);
   }
   100% {
     transform: translateY(0);
@@ -127,7 +127,7 @@ body {
 }
 @-moz-keyframes slideDown {
   0% {
-    transform: translateY(-50px);
+    transform: translateY(-100%);
   }
   100% {
     transform: translateY(0);
@@ -135,7 +135,7 @@ body {
 }
 @keyframes slideDown {
   0% {
-    transform: translateY(-50px);
+    transform: translateY(-100%);
   }
   100% {
     transform: translateY(0);
@@ -155,8 +155,42 @@ code {
   --border-hover-color: #58b9ff; 
   --gray-color: rgb(231, 231, 231); 
   --hover-color: gray;  
+  --lightBlue: #59baff; 
+  --darkBlue: #068ae9; 
+  --darkerBlue: #025b9b; 
+  --lightGreen: #7dce88; 
+  --darkGreen: #008d00;  
 }
 
 button { 
   font-family:'Quicksand', sans-serif;
+}
+
+.lightBlue { 
+  color: var(--lightBlue); 
+  font-weight: bold;
+}
+
+.darkBlue { 
+  color: var(--darkBlue); 
+  font-weight: bold;
+}
+
+.darkerBlue { 
+  color: var(--darkerBlue); 
+  font-weight: bold; 
+}
+
+.lightGreen { 
+  color: var(--lightGreen); 
+  font-weight: bold;
+}
+
+.darkGreen { 
+  color: var(--darkGreen); 
+  font-weight: bold;
+}
+
+.code { 
+  font-size: 12px; 
 }

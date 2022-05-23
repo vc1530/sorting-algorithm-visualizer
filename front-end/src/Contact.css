@@ -87,10 +87,10 @@
 .submit-button button { 
     margin: 10px; 
     border-style: none; 
-    height: 50px; 
-    width: 100px; 
+    height: 40px; 
+    width: 80px; 
     border-radius: 10px; 
-    font-size: 16px; 
+    font-size: 14px; 
     background-size: 200% auto;
     background-image: linear-gradient(to right, #fbc2eb 0%, #a6c1ee 51%, #fbc2eb 100%);
     transition: .5s; 
