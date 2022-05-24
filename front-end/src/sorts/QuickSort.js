@@ -85,7 +85,6 @@ export const sort = async (visualizerData) => {
     root = quickSort(0, data.length-1) 
     convertToSteps(root, 0) 
     steps = unpackSteps(steps) 
-    console.log(sortedIndices)
     return steps 
 } 
 

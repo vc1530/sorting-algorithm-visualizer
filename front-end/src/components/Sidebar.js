@@ -1,6 +1,6 @@
 import './Sidebar.css'
 import { BiCodeBlock } from 'react-icons/bi'
-import { lightBlue } from './Helper'
+import { lightBlue } from './../Helper'
 import { useEffect } from 'react'
 
 const Sidebar = props => { 
@@ -22,12 +22,13 @@ const Sidebar = props => {
             </header>
             <div className = "Sidebar-info"> 
                 <div id = 'info-about'>
-                    {props.info && props.code? 
-                        <span > 
+                    {props.info && props.code ? 
+                        <span> 
                             {props.info} 
                             {props.code}
                         </span>: 
-                        <span>Select an algorithm above to get started!</span> }
+                        <span>Select an algorithm above to get started!</span> 
+                    }
                 </div>
             </div>
         </main>
