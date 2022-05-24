@@ -1,6 +1,6 @@
 import './Visualizer.css' 
 import { useState, useEffect} from 'react' 
-import { lightBlue } from './../Helper'
+import { lightBlue } from '../Helper'
 import Timer from './Timer'
 
 const Visualizer = props => { 
@@ -9,12 +9,14 @@ const Visualizer = props => {
     let steps = []
     let play = false 
     let speed 
+    const onGradient = "linear-gradient(to right, rgba(153,153,153,1) 0%, rgba(187,187,187,1) 51%, rgba(216,216,216,1) 100%)"
+    const offGradient = "linear-gradient(to right, #fbc2eb 0%, #a6c1ee 51%, #fbc2eb 100%)" 
+    const [sort, setSort] = useState(() => () => {})
     const [resetTimer, setResetTimer] = useState(() => () => {})
     const [startTimer, setStartTimer] = useState(() => () => {})
     const [stopTimer, setStopTimer] = useState(() => () => {})
     const [input, setInput] = useState('')  
     const [data, setData] = useState([]) 
-    const [sort, setSort] = useState(() => () => {})
     const getData = input => { 
         const data = input.split(',') 
         data.forEach((element, j) => { 
@@ -43,13 +45,13 @@ const Visualizer = props => {
 
     const disableBtn = (id) => { 
         const btn = document.getElementById(id) 
-        btn.style.backgroundImage = "linear-gradient(to right, rgba(153,153,153,1) 0%, rgba(187,187,187,1) 51%, rgba(216,216,216,1) 100%)"
+        btn.style.backgroundImage = onGradient
         btn.disabled = true
     }
 
     const enableBtn = (id) => { 
         const btn = document.getElementById(id) 
-        btn.style.backgroundImage = "linear-gradient(to right, #fbc2eb 0%, #a6c1ee 51%, #fbc2eb 100%)" 
+        btn.style.backgroundImage = offGradient
         btn.disabled = false 
     }
 
@@ -144,7 +146,6 @@ const Visualizer = props => {
     return ( 
         <main className = "Visualizer">
             <header>
-            <link rel="shortcut icon" href="/../favicon.ico" type="image/x-icon" />
                 VISUALIZER&nbsp;
                 <div>
                     <header id = "Visualizer-title">
