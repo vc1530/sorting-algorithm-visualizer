@@ -1,6 +1,7 @@
 import './Visualizer.css' 
 import { useState, useEffect} from 'react' 
-import { lightBlue } from './Helper'
+import { lightBlue } from './../Helper'
+import Timer from './Timer'
 
 const Visualizer = props => { 
 
@@ -8,9 +9,12 @@ const Visualizer = props => {
     let steps = []
     let play = false 
     let speed 
+    const [resetTimer, setResetTimer] = useState(() => () => {})
+    const [startTimer, setStartTimer] = useState(() => () => {})
+    const [stopTimer, setStopTimer] = useState(() => () => {})
     const [input, setInput] = useState('')  
     const [data, setData] = useState([]) 
-    const [sort, setSort] = useState(() => async () => {})
+    const [sort, setSort] = useState(() => () => {})
     const getData = input => { 
         const data = input.split(',') 
         data.forEach((element, j) => { 
@@ -19,13 +23,13 @@ const Visualizer = props => {
         setData(data) 
     }
 
-    useEffect(() => {  
+    useEffect(() => { 
 
         disableBtn('pause-play') 
         disableBtn('next') 
 
         if (props.sort) {  
-            import(`./sorts/${props.sort}`)
+            import(`../sorts/${props.sort}`)
             .then(async (Sort)=> {  
                 await setUp()
                 props.getInfo(Sort.info) 
@@ -64,6 +68,7 @@ const Visualizer = props => {
         play = false
         steps = [] 
         i=0 
+        resetTimer() 
         
         if (props.sort && (data.length > 0)) {
             enableBtn('pause-play') 
@@ -101,17 +106,19 @@ const Visualizer = props => {
     }
 
     const Sort = async () => { 
-        if (steps.length === 0) steps = await sort(data) 
-        if (play) { 
-            await sortStep() 
-            if (!speed) speed = 50
-            setTimeout(Sort, (100-speed) * 5) 
-        } 
+        if (!play) return 
+        if (steps.length === 0) 
+            steps = await sort(data) 
+        await sortStep() 
+        if (!speed) speed = 50
+        setTimeout(Sort, (100-speed) * 5) 
     }
 
     const sortStep = async () => {
-        if (steps.length === 0) steps = await sort(data) 
+        if (steps.length === 0) 
+            steps = await sort(data) 
         if ((!steps) || i >= steps.length) { 
+            stopTimer() 
             endSort() 
             return 
         } 
@@ -165,10 +172,15 @@ const Visualizer = props => {
                                     getData(e.target.value)
                             }}
                         /> 
-                        <button> Save </button>
+                        <button id = "save-btn"> Save </button>
                     </form>
                 </div>
                 <div className = 'Visualizer-controls'> 
+                    <Timer 
+                        setResetTimer = {setResetTimer}
+                        setStartTimer = {setStartTimer} 
+                        setStopTimer = {setStopTimer}
+                    /> 
                     <div className="slidecontainer">
                         <input 
                             type="range" 
@@ -185,13 +197,17 @@ const Visualizer = props => {
                             () => { 
                                 play = !play 
                                 if (play === true) { 
+                                    if (document.querySelector(`#pause-play`).innerHTML === "Sort") 
+                                        resetTimer() 
                                     disableBtn('next') 
                                     document.querySelector(`#pause-play`).innerHTML = "Pause"
                                     Sort() 
+                                    startTimer()
                                 }
                                 else { 
                                     enableBtn('next') 
-                                    document.querySelector(`#pause-play`).innerHTML = "Play"
+                                    document.querySelector(`#pause-play`).innerHTML = "Play" 
+                                    stopTimer() 
                                 }
                             }}
                             id = "pause-play"

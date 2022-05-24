@@ -88,11 +88,14 @@ header header {
     color: white; 
     height: 40px; 
     width: 70px; 
-    margin-left: 10px; 
 }
 
 .Visualizer button:hover { 
     background-position: right center;
+}
+
+#save-btn { 
+    margin-left: 10px; 
 }
 
 /* END OF INPUT FORM STYLING  */
@@ -140,8 +143,9 @@ header header {
 .Visualizer-controls { 
     display: flex; 
     flex-direction: column;
-    justify-content: left;
-    margin-left: 40px; 
+    align-items: center;
+    justify-content: top;
+    margin-left: 30px; 
     width: 200px; 
 }
 
@@ -150,16 +154,11 @@ header header {
     flex-direction: row; 
 }
 
+#sort-next-btns button { 
+    margin: 5px; 
+}
+
   #slider {
-    /* width: 150px; 
-    height: 3px;
-    margin:10px; 
-    margin-bottom: 20px; 
-    border-radius: 100%;  
-    outline: none;
-    opacity: 0.5;
-    -webkit-transition: .2s;
-    transition: opacity .2s; */
     width: 160px; 
     height: 0px;
     margin:5px; 

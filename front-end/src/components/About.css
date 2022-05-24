@@ -66,12 +66,14 @@
 .About-socials p { 
     padding-left: 5px; 
     text-decoration: none;
+    transition: .25s; 
 }
 
 .About-socials:hover { 
-    color: gray; 
+    color: var(--hover-color); 
     border-image: linear-gradient(to right, #fbc2eb 0%, #a6c1ee 51%, #fbc2eb 100%);    border-image: linear-gradient(to right, #fbc2eb 0%, #a6c1ee 51%, #fbc2eb 100%);
     border-image-slice: 1;  
+    transition: .25s; 
 }
 
 .About-bio { 

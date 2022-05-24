@@ -1,7 +1,7 @@
 import './About.css' 
 import Header from './Header' 
 import { useLocation } from 'react-router-dom' 
-import me from './me.png'
+import me from '../images/me.png'
 import { AiOutlineLinkedin, AiFillGithub } from 'react-icons/ai'
 import { MdOutlineAlternateEmail } from 'react-icons/md'
 

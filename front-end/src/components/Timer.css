@@ -1,0 +1,18 @@
+.Timer { 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    width: 120px;  
+    margin-bottom: 20px; 
+    padding: 10px; 
+    background-color: white;
+    border-radius: 10px; 
+    box-shadow: 1.5px 1.5px 1.5px 1.5px var(--gray-color); 
+    font-size: 20px; 
+}
+
+.digits { 
+    text-align: center;
+    width: 24px; 
+}
