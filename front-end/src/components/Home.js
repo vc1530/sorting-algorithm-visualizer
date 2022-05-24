@@ -10,24 +10,12 @@ const Home = props => {
     const [info, setInfo] = useState('') 
     const [code, setCode] = useState('')
 
-    const getSort = e => { 
-        setSort(e) 
-    }
-
-    const getInfo = e => { 
-        setInfo(e) 
-    }
-
-    const getCode = e => { 
-        setCode(e) 
-    }
-
     return ( 
         <main className = "Home">
             <Header 
                 from = "home"
                 sort = {sort} 
-                getSort = {getSort}
+                setSort = {setSort}
             /> 
             <div className = "Home-main">
                 <Sidebar 
@@ -37,8 +25,8 @@ const Home = props => {
                 />
                 <Visualizer 
                     sort = {sort}
-                    getInfo = {getInfo} 
-                    getCode = {getCode} 
+                    setInfo = {setInfo} 
+                    setCode = {setCode} 
                 /> 
             </div>
         </main>

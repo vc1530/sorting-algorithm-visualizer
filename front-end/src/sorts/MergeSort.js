@@ -33,6 +33,7 @@ export const code = (
         &#125;
 
         <br></br><br></br>
+        
         merge(left, right) &#123;
         <br></br>
         {tab}mergedArray = []  

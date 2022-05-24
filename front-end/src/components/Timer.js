@@ -13,7 +13,6 @@ const Timer = props => {
     const [mil, setMil] = useState('00')
     const [sec, setSec] = useState('00')
     const [min, setMin] = useState('00')
-    //const [displayTime, setDisplayTime] = useState('00:00:00')
 
     useEffect(() => { 
         props.setResetTimer(() => resetTimer)
@@ -43,7 +42,6 @@ const Timer = props => {
     }
 
     const runTimer = () => { 
-        //console.log("hey")
         if (!play) return
         timerStep() 
         setTimeout(runTimer, 10) 
@@ -56,28 +54,11 @@ const Timer = props => {
     }
 
     const getDisplayTime = (time) => { 
-
         let milliseconds = time % 1000 
         let seconds = (time - milliseconds)/1000
         milliseconds = (milliseconds - (milliseconds % 10))/10 
         let minutes = Math.floor(seconds/60) 
         seconds = seconds - (minutes * 60) 
-
-        // let milStr 
-        // let secStr
-        // let minStr
-
-        // if (milliseconds === 0) milStr = '00'
-        // else if (milliseconds < 10) milStr = '0' + milliseconds.toString()
-        // else milStr = milliseconds.toString() 
-
-        // if (seconds === 0) secStr = '00'
-        // else if (seconds < 10) secStr = '0' + seconds.toString()
-        // else secStr = seconds.toString() 
-
-        // if (minutes === 0) minStr = '00'
-        // else if (minutes < 10) minStr = '0' + minutes.toString() 
-        // else minStr = minutes.toString() 
 
         if (milliseconds === 0) setMil('00')
         else if (milliseconds < 10) setMil('0' + milliseconds.toString())
@@ -90,8 +71,6 @@ const Timer = props => {
         if (minutes === 0) setMin('00')
         else if (minutes < 10) setMin('0' + minutes.toString()) 
         else setMin(minutes.toString()) 
-
-        //setDisplayTime(minStr + ":" + secStr + ":" + milStr) 
     }
 
     return ( 

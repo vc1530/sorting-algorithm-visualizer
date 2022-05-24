@@ -5,7 +5,7 @@ body {
   font-family:'Quicksand', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: var(--header-color);
+  background-color: var(--background-color);
 }
 
 @keyframes grow {
@@ -148,9 +148,7 @@ code {
 }
 
 :root { 
-  --background-color: #ffffff; 
-  --header-color: #fff6fb; 
-  --text-color: #000000; 
+  --background-color: #fff6fb; 
   --border-color: #ABDAFC; 
   --border-hover-color: #58b9ff; 
   --gray-color: rgb(231, 231, 231); 
@@ -160,7 +158,18 @@ code {
   --darkerBlue: #025b9b; 
   --lightGreen: #7dce88; 
   --darkGreen: #008d00;  
+  --gradient: linear-gradient(to right, #fbc2eb 0%, #a6c1ee 51%, #fbc2eb 100%); 
 }
+
+header { 
+  font-size: 20px; 
+  font-weight: 600; 
+  font-style: italic; 
+  margin-left: 20px; 
+  display: flex; 
+  flex-direction: row;
+  align-items: center;
+} 
 
 button { 
   font-family:'Quicksand', sans-serif;
