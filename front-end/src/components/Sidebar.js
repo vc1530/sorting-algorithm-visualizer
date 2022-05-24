@@ -6,12 +6,10 @@ import { useEffect } from 'react'
 const Sidebar = props => { 
 
     useEffect(() => { 
-        const parents = document.getElementsByClassName('Sidebar-info') 
-        for (let i = 0; i < parents.length; i++) { 
-            const child = parents[i].firstChild
-            parents[i].removeChild(child)
-            parents[i].appendChild(child) 
-        }
+        const parent = document.getElementById('Sidebar-container') 
+        const child = parent.firstChild
+        parent.removeChild(child)
+        parent.appendChild(child) 
     })
 
     return ( 
@@ -20,14 +18,14 @@ const Sidebar = props => {
                 <BiCodeBlock size = "25px" color = {lightBlue} />
                 &ensp;{props.title}
             </header>
-            <div className = "Sidebar-info"> 
-                <div id = 'info-about'>
+            <div id = "Sidebar-container"> 
+                <div id = 'Sidebar-info'>
                     {props.info && props.code ? 
-                        <span> 
+                        <>
                             {props.info} 
                             {props.code}
-                        </span>: 
-                        <span>Select an algorithm above to get started!</span> 
+                        </>: 
+                        <>Select an algorithm above to get started!</> 
                     }
                 </div>
             </div>

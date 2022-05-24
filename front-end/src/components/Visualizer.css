@@ -2,8 +2,6 @@
     display: flex; 
     flex-direction: column;
     justify-content: center;
-    /* margin-left: 50px;
-    margin-right: 75px;   */
 }
 
 .Visualizer-main { 
@@ -12,16 +10,6 @@
     display: flex; 
     flex-direction: row;
 }
-
-.Visualizer header { 
-    font-size: 20px; 
-    font-weight: 600; 
-    font-style: italic; 
-    margin-left: 20px; 
-    display: flex; 
-    flex-direction: row;
-    align-items: center;
-} 
 
 /* START OF TITLE STYLING  */
 
@@ -48,7 +36,7 @@ header header {
     margin-bottom: -3px;
     border-width: 3px; 
     border-bottom-style: solid; 
-    border-image: linear-gradient(to right, #fbc2eb 0%, #a6c1ee 51%, #fbc2eb 100%);
+    border-image: var(--gradient);
     border-image-slice: 1; 
 }
 
@@ -81,7 +69,7 @@ header header {
     border-radius: 10px; 
     border-style: none; 
     background-size: 200% auto;
-    background-image: linear-gradient(to right, #fbc2eb 0%, #a6c1ee 51%, #fbc2eb 100%);
+    background-image: var(--gradient);
     transition: .5s; 
     font-weight: bold;
     font-style:italic;
@@ -145,7 +133,7 @@ header header {
     flex-direction: column;
     align-items: center;
     justify-content: top;
-    margin-left: 30px; 
+    margin-left: 40px; 
     width: 200px; 
 }
 
