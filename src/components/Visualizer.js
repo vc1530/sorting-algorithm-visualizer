@@ -66,17 +66,17 @@ const Visualizer = props => {
 
     const setUp = async () => { 
 
-        // for (let i = 0; i < data.length; i ++) {
-        //     if (data[i] !== 0 && !data[i]) { 
-        //         alert("Invalid input")
-        //         return 
-        //     }
-        // }
+        for (let i = 0; i < data.length; i ++) {
+            if (data[i] !== 0 && !data[i]) { 
+                alert("Invalid input")
+                return 
+            }
+        }
 
-        // if (data.length>30) { 
-        //     alert("Please enter no more than 30 values")
-        //     return 
-        // }
+        if (data.length>30) { 
+            alert("Please enter no more than 30 values")
+            return 
+        }
 
         if (props.sort && (data.length > 0)) {
             enableBtn('pause-play') 
