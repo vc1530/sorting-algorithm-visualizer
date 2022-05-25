@@ -56,6 +56,7 @@ const Visualizer = props => {
     }
 
     const slideTitle = (title) => { 
+        console.log("hello") 
         const titleBar = document.getElementById('Visualizer-title') 
         const titleParent = titleBar.parentNode 
         titleParent.removeChild(titleBar)  
@@ -87,7 +88,6 @@ const Visualizer = props => {
             const barComp = document.createElement("div")
             barComp.className = "barComp"         
             barComp.id = `e${i}`
-            //barComp.style.width = "15px"
 
             const num = document.createElement("p") 
             num.innerHTML = element; 
@@ -95,7 +95,6 @@ const Visualizer = props => {
             const bar = document.createElement("div") 
             bar.className = "bar" 
             bar.style.height = `${element/max * 350}px`
-            //bar.style.backgroundColor = lightBlue
 
             barComp.style.height = `${element/max * 350 + 10}px`
             barComp.appendChild(num) 

@@ -23,11 +23,11 @@ header header {
 
 #Visualizer-title {  
     transition: 1s;  
+    margin-left: 0px; 
     width: 200px; 
     -webkit-animation: titleSlideRight 1s forwards;
     -moz-animation: titleSlideRight 1s forwards;
     animation: titleSlideRight 1s forwards;
-    margin-left: -200px;
 }
 
 #Visualizer-title span { 
