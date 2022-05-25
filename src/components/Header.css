@@ -11,6 +11,7 @@
     font-weight: 600;
     background-color: white;
     box-shadow: 1.5px 1.5px 1.5px 1.5px var(--gray-color); 
+    overflow: scroll; 
 }
 
 #InsertionSort { 
