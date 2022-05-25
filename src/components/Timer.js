@@ -1,5 +1,5 @@
 import './Timer.css'
-import { lightBlue } from './../Helper'
+import { lightBlue } from '../Helper'
 import { useState, useEffect} from 'react' 
 import { BsStopwatch } from 'react-icons/bs'
 

@@ -65,6 +65,10 @@ export const sort = async (data)  => {
                 {
                     func: changeColor, 
                     args: [sortedIndices[j], darkGreen]
+                }, 
+                { 
+                    func: changeColor, 
+                    args: [sortedIndices[j+1], darkBlue]
                 }
             )
             if (j !== 0) { 
@@ -73,7 +77,9 @@ export const sort = async (data)  => {
                     args: [sortedIndices[j-1], lightBlue]
                 })
             }
+            steps.push(step) 
             if (data[sortedIndices[j]] > data[sortedIndices[j+1]]) { 
+                const step = [] 
                 step.push({ 
                     func: changeColor,
                     args: [sortedIndices[j+1], darkBlue]
@@ -86,8 +92,8 @@ export const sort = async (data)  => {
                 sortedIndices[j] = sortedIndices[j+1] 
                 sortedIndices[j+1] = tmp
                 swapped = true 
+                steps.push(step) 
             }  
-            steps.push(step) 
         }
 
         if (!swapped) break 

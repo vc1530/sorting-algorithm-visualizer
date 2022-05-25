@@ -72,12 +72,12 @@ export const code = (
             <br></br>
             &#125;
         </pre>
-        <font size = "1">
+        {/* <font size = "1">
             Note: While Merge Sort and Quick Sort have the same average runtime, 
             to show the mechanisms of the partition function clearly, 
             Quick Sort's implementation in this visualizer will generally be slower than Merge Sort.
-        </font>
-    </div>
+        </font> */}
+    </div> 
 )
 
 export const sort = async (visualizerData) => { 

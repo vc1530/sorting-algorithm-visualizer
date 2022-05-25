@@ -60,7 +60,6 @@ const Visualizer = props => {
         const titleParent = titleBar.parentNode 
         titleParent.removeChild(titleBar)  
         titleBar.lastChild.innerHTML = title
-        titleBar.style.marginLeft = "0px" 
         titleParent.appendChild(titleBar) 
     }
 
@@ -88,7 +87,7 @@ const Visualizer = props => {
             const barComp = document.createElement("div")
             barComp.className = "barComp"         
             barComp.id = `e${i}`
-            barComp.style.width = "15px"
+            //barComp.style.width = "15px"
 
             const num = document.createElement("p") 
             num.innerHTML = element; 
@@ -96,7 +95,7 @@ const Visualizer = props => {
             const bar = document.createElement("div") 
             bar.className = "bar" 
             bar.style.height = `${element/max * 350}px`
-            bar.style.backgroundColor = lightBlue
+            //bar.style.backgroundColor = lightBlue
 
             barComp.style.height = `${element/max * 350 + 10}px`
             barComp.appendChild(num) 
@@ -142,6 +141,23 @@ const Visualizer = props => {
             e.lastChild.style.backgroundColor = lightBlue
         }
     }
+    
+    const pausePlay = () => { 
+        play = !play 
+        if (play === true) { 
+            if (document.querySelector(`#pause-play`).innerHTML === "Sort") 
+                resetTimer() 
+            disableBtn('next') 
+            document.querySelector(`#pause-play`).innerHTML = "Pause"
+            Sort() 
+            startTimer()
+        }
+        else { 
+            enableBtn('next') 
+            document.querySelector(`#pause-play`).innerHTML = "Play" 
+            stopTimer() 
+        }
+    }
 
     return ( 
         <main className = "Visualizer">
@@ -182,38 +198,30 @@ const Visualizer = props => {
                         setStartTimer = {setStartTimer} 
                         setStopTimer = {setStopTimer}
                     /> 
-                    <div className="slidecontainer">
+                    <div className="slidercontainer">
                         <input 
+                            id="slider"
                             type="range" 
                             min="0" 
                             max="99" 
                             defaultValue = "50" 
                             value={speed} 
                             onChange = {e => speed = e.target.value} 
-                            id="slider"
                         />
                     </div>
                     <div id = 'sort-next-btns'> 
-                        <button onClick = {
-                            () => { 
-                                play = !play 
-                                if (play === true) { 
-                                    if (document.querySelector(`#pause-play`).innerHTML === "Sort") 
-                                        resetTimer() 
-                                    disableBtn('next') 
-                                    document.querySelector(`#pause-play`).innerHTML = "Pause"
-                                    Sort() 
-                                    startTimer()
-                                }
-                                else { 
-                                    enableBtn('next') 
-                                    document.querySelector(`#pause-play`).innerHTML = "Play" 
-                                    stopTimer() 
-                                }
-                            }}
+                        <button 
                             id = "pause-play"
-                        >Sort</button>
-                        <button id = 'next' onClick = {sortStep}> Next </button>
+                            onClick = {pausePlay}
+                        >
+                            Sort
+                        </button>
+                        <button 
+                            id = 'next' 
+                            onClick = {sortStep}
+                        > 
+                            Next
+                        </button>
                     </div>
                 </div>
             </div>
