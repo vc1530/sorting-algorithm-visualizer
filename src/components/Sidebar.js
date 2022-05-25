@@ -1,6 +1,6 @@
 import './Sidebar.css'
 import { BiCodeBlock } from 'react-icons/bi'
-import { lightBlue } from './../Helper'
+import { lightBlue } from '../Helper'
 import { useEffect } from 'react'
 
 const Sidebar = props => { 
