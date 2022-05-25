@@ -56,11 +56,11 @@ const Visualizer = props => {
     }
 
     const slideTitle = (title) => { 
-        console.log("hello") 
         const titleBar = document.getElementById('Visualizer-title') 
         const titleParent = titleBar.parentNode 
         titleParent.removeChild(titleBar)  
         titleBar.lastChild.innerHTML = title
+        titleBar.style.marginLeft = "0px" 
         titleParent.appendChild(titleBar) 
     }
 
@@ -164,7 +164,8 @@ const Visualizer = props => {
                 VISUALIZER&nbsp;
                 <div>
                     <header id = "Visualizer-title">
-                        /&nbsp;<span></span>
+                        /&nbsp;
+                        <span></span>
                     </header>
                 </div>
             </header>
