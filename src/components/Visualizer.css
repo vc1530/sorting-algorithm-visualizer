@@ -13,6 +13,10 @@
 
 /* START OF TITLE STYLING  */
 
+.Visualizer header { 
+    margin-left: 20px; 
+}
+
 header div { 
     overflow: hidden;
 }
