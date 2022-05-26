@@ -28,10 +28,10 @@ header header {
 #Visualizer-title {  
     transition: 1s;  
     width: 200px; 
-    -webkit-animation: titleSlideRight 1s forwards;
-    -moz-animation: titleSlideRight 1s forwards;
-    animation: titleSlideRight 1s forwards;
-    margin-left: -200px; 
+    -webkit-animation: slideRight 1s forwards;
+    -moz-animation: slideRight 1s forwards;
+    animation: slideRight 1s forwards;
+    margin-left: -100%; 
 }
 
 #Visualizer-title span { 
@@ -86,7 +86,7 @@ header header {
     background-position: right center;
 }
 
-#save-btn { 
+#save { 
     margin-left: 10px; 
 }
 
@@ -154,7 +154,7 @@ header header {
 #slider {
     width: 160px; 
     height: 0px;
-    margin:5px; 
+    margin: 5px; 
     margin-bottom: 30px; 
     background: transparent;
     outline: none;
@@ -169,7 +169,7 @@ header header {
     overflow: hidden;
     border-radius: 25px;
     height: auto;
-    margin:5px;
+    margin: 5px;
     width: 150px; 
 }
 

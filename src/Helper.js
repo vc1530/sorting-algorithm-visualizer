@@ -4,21 +4,15 @@ export const darkerBlue = "#129bfd"
 export const lightGreen = "#a0e9aa"
 export const darkGreen = "#43b051"
 
-export const changeColor = (i, color) => { 
-    const e = document.getElementById(`e${i}`)
-    e.lastChild.style.backgroundColor = color
-}
-
 export const tab = (<span>&emsp;&emsp;</span>)
 
 export const colorInline = (color, body) => { 
     return (<span className = {color}>{body}</span>)
 }
 
-export const delay = speed => {
-    return new Promise(resolve => setTimeout(() => {
-      resolve();
-    }, 100)); 
+export const changeColor = (i, color) => { 
+    const e = document.getElementById(`e${i}`)
+    e.lastChild.style.backgroundColor = color
 }
 
 export const swap = (i,j) => { 
@@ -61,7 +55,7 @@ export const unpackSteps = (steps) => {
     return newSteps
 }
 
-export const mergeArrays = (arr) => { 
+const mergeArrays = (arr) => { 
     if (arr.length === 1) 
         return arr[0]
 
