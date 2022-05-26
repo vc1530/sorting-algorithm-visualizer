@@ -31,6 +31,8 @@ const Visualizer = props => {
 
     useEffect(() => { 
 
+        console.log(props.sort) 
+
         disableBtn('pause-play') 
         disableBtn('next') 
 
