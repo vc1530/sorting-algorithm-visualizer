@@ -13,11 +13,11 @@ export const info = (
         Quick Sort is a recursive sorting algorithm with O(N*logN) runtime. 
         <br></br><br></br>
         Quick Sort partitions the array by placing all elements less than a chosen {colorInline('darkGreen', 'pivot')} before it and all elements greater than the {colorInline('darkGreen', 'pivot')} after it.
-        It then calls itself on the subarray before the pivot and the subarray after the pivot. 
+        It then calls itself on the subarray before the {colorInline('lightGreen', 'pivot')} and the subarray after the {colorInline('lightGreen', 'pivot')}. 
         <br></br><br></br>
         To partition the array, Quick Sort uses two pointers, {colorInline('darkBlue', 'arr[i]')} and {colorInline('darkerBlue', 'arr[j]')}, to pass through it. 
         When {colorInline('darkBlue', 'arr[i]')} is greater than the {colorInline('darkGreen', 'pivot')} and {colorInline('darkerBlue', 'arr[j]')} is less than the {colorInline('darkGreen', 'pivot')}, the two are swapped. 
-        The {colorInline('darkGreen', 'pivot')} is then inserted after {colorInline('darkBlue', 'arr[i]')}. 
+        The {colorInline('lightGreen', 'pivot')} is then inserted after {colorInline('darkBlue', 'arr[i]')}. 
     </div>
 )
 
@@ -68,7 +68,7 @@ export const code = (
             <br></br>
             {tab}{colorInline('darkGreen', 'arr[arr.length - 1]')} = temp
             <br></br>
-            {tab}return i + 1
+            {tab}return {colorInline('lightGreen', 'i + 1')}
             <br></br>
             &#125;
         </pre>

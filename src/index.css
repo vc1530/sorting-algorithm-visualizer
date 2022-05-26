@@ -17,31 +17,6 @@ body {
   }
 }
 
-@keyframes fadeIn {
-  0% {opacity:0;}
-  100% {opacity:1;}
-}
-
-@-moz-keyframes fadeIn {
-  0% {opacity:0;}
-  100% {opacity:1;}
-}
-
-@-webkit-keyframes fadeIn {
-  0% {opacity:0;}
-  100% {opacity:1;}
-}
-
-@-o-keyframes fadeIn {
-  0% {opacity:0;}
-  100% {opacity:1;}
-}
-
-@-ms-keyframes fadeIn {
-  0% {opacity:0;}
-  100% {opacity:1;}
-}
-
 @-webkit-keyframes slideLeft {
   0% {
     transform: translateX(100vw);
@@ -69,7 +44,7 @@ body {
 
 @-webkit-keyframes slideRight {
   0% {
-    transform: translateX(-100vw);
+    transform: translateX(-100%);
   }
   100% {
     transform: translateX(0);
@@ -77,7 +52,7 @@ body {
 }
 @-moz-keyframes slideRight {
   0% {
-    transform: translateX(-100vw);
+    transform: translateX(-100%);
   }
   100% {
     transform: translateX(0);
@@ -85,32 +60,7 @@ body {
 }
 @keyframes slideRight {
   0% {
-    transform: translateX(-100vw);
-  }
-  100% {
-    transform: translateX(0);
-  }
-}
-
-@-webkit-keyframes titleSlideRight {
-  0% {
-    transform: translateX(-200px);
-  }
-  100% {
-    transform: translateX(0);
-  }
-}
-@-moz-keyframes titleSlideRight {
-  0% {
-    transform: translateX(-200px);
-  }
-  100% {
-    transform: translateX(0);
-  }
-}
-@keyframes titleSlideRight {
-  0% {
-    transform: translateX(-200px);
+    transform: translateX(-100%);
   }
   100% {
     transform: translateX(0);
@@ -143,6 +93,7 @@ body {
 }
 
 code {
+  font-size: 12px; 
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }

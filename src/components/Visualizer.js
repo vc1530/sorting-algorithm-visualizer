@@ -18,6 +18,10 @@ const Visualizer = props => {
     const [input, setInput] = useState('')  
     const [data, setData] = useState([]) 
     const getData = input => { 
+        if (input === '') { 
+            setData([]) 
+            return 
+        }
         const data = input.split(',') 
         data.forEach((element, j) => { 
             data[j] = parseInt(element) 
@@ -78,17 +82,17 @@ const Visualizer = props => {
             return 
         }
 
-        if (props.sort && (data.length > 0)) {
-            enableBtn('pause-play') 
-            enableBtn('next') 
-            document.querySelector(`#pause-play`).innerHTML = "Sort"
-        } 
-
         document.querySelector('#slider').value = speed
         play = false
         steps = [] 
         i=0 
         resetTimer() 
+
+        if (props.sort && (data.length > 0)) {
+            enableBtn('pause-play') 
+            enableBtn('next') 
+            document.querySelector(`#pause-play`).innerHTML = "Sort"
+        } 
 
         const visualizer = document.getElementById("visualizer") 
 
@@ -186,23 +190,25 @@ const Visualizer = props => {
                 <div className = "Visualizer-form"> 
                     <div id = "visualizer"> 
                     </div>
-                    <form onSubmit = {
-                        async e => {
+                    <form onSubmit = {async e => 
+                        {
                             e.preventDefault() 
                             await setUp() 
-                        }} > 
+                        }
+                    } > 
                         <input
                             id = "dataInput" 
                             type = "text" 
-                            placeholder = "Please enter values separated by commas. (Ex. 4,10,7,3,2,9,8,1,6)" 
+                            placeholder = "Enter up to 30 values separated by commas. (Ex. 4,10,7,3,2,9,8,1,6)" 
                             value = {input} 
-                            onChange = {
-                                e => { 
+                            onChange = {e => 
+                                { 
                                     setInput(e.target.value) 
                                     getData(e.target.value)
-                            }}
+                                }
+                            }
                         /> 
-                        <button id = "save-btn"> Save </button>
+                        <button id = "save"> Save </button>
                     </form>
                 </div>
                 <div className = 'Visualizer-controls'> 
