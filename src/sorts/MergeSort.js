@@ -113,10 +113,10 @@ const mergeSort = (lo, hi) => {
         return node 
     } 
     let m = lo + Math.floor((hi - lo)/2) 
-    let left = mergeSort(lo, m) 
-    if (left) node.left = left
-    let right = mergeSort(m, hi) 
-    if (right) node.right = right 
+    node.left = mergeSort(lo, m) 
+    //if (left) node.left = left
+    node.right = mergeSort(m, hi) 
+    //if (right) node.right = right 
     node.steps = merge(lo, m, m, hi)   
     return node 
 }
